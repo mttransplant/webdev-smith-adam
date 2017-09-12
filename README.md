@@ -1,3 +1,10 @@
+# About Adam
+a) I'm a graduate student in the MSCS at Northeastern University. I have also worked at Northeastern for 15 years, starting in the academic advising office for the College of Arts and Sciences and then moving to the College of Arts, Media and Design (CAMD) when it formed in 2010. As of August 2016 I moved into the role of assistant dean of academic programs in CAMD.
+b) This repository is for the submission of the assignments for CS 5610 - Web Development.
+c.1) https://webdev-smith-adam.herokuapp.com/
+c.2) Project link TBD
+c.3) Assignment link TBD
+
 # AngularFourMEANSeed
 
 After you clone this repository and run "npm install"
