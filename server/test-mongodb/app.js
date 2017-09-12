@@ -13,7 +13,7 @@ module.exports = function(app)
   if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
     var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment
     var password = process.env.MLAB_PASSWORD_WEBDEV;
-    connectionString = 'mongodb://' + username + ":" + password;
+    connectionString = 'mongodb://' + username + ':' + password;
     connectionString += '@ds133084.mlab.com:33084/heroku_kds2x3lm'; // use yours
   }
 
