@@ -1,10 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <!-- Meta tags for making website for mobile-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+
+
+  <meta charset="UTF-8">
+  <title>New Page</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+
+  <!-- STYLE sheet comes after all the libraries are loaded. Document style-->
+
+  <link href="../css/style.css" rel="stylesheet"/>
 </head>
+
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row">
+      <!--back button-->
+      <span class="col-xs-1 col-s-1 col-md-1">
+        <p class="navbar-text">
+          <a href="../user/profile.html" class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </p>
+      </span>
+
+      <!-- Pages -->
+      <span class="col-md-2 hidden-xs hidden-sm">
+        <a class="navbar-brand thick navbar-link">
+          <b>Pages</b>
+        </a>
+      </span>
+
+      <!--Plus Sign-->
+      <span class="col-md-1 hidden-xs hidden-sm">
+        <a href="website-new.html" class="navbar-text navbar-link">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </span>
+
+      <!--Close New Page-->
+      <span class="col-md-1 hidden-xs hidden-sm">
+        <a href="website-list.html" class="navbar-text navbar-link">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </span>
+
+      <!--heading on the nav bar-->
+      <span class="col-xs-10 col-s-10 col-md-6">
+        <p class="navbar-header">
+          <a class="navbar-brand thick navbar-link">
+        <b>New Page</b>
+      </a>
+        </p>
+      </span>
+
+      <!--tick mark-->
+      <span class="col-xs-1 col-s-1 col-md-1">
+        <p class="navbar-text">
+          <a href="../user/profile.html" class="navbar-link">
+            <span class="glyphicon glyphicon-ok"></span>
+          </a>
+        </p>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<div class="row aps-body-padding">
+  <div class="container col-md-4 hidden-xs hidden-sm">
+    <div class="container">
+      <div class="row aps-list-spacing">
+        <div class="col-md-3">
+          <a href="#">Blog Post</a>
+        </div>
+        <div class="col-md-1">
+          <a href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+      <div class="row aps-list-spacing">
+        <div class="col-md-3">
+          <a href="#">Blogs</a>
+        </div>
+        <div class="col-md-1">
+          <a href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+      <div class="row aps-list-spacing">
+        <div class="col-md-3">
+          <a href="#">Home</a>
+        </div>
+        <div class="col-md-1">
+          <a href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+      <div class="row aps-list-spacing">
+        <div class="col-md-3">
+          <a href="#">About</a>
+        </div>
+        <div class="col-md-1">
+          <a href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+      <div class="row aps-list-spacing">
+        <div class="col-md-3">
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="col-md-1">
+          <a href="#">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container col-xs-12 col-sm-12 col-md-8">
+    <form class="aps-form-padding" action="#">
+      <label for="name">Name</label>
+      <input id="name" class="form-control" type="text" placeholder="Page Name"/>
+
+      <label for="title">Title</label>
+      <textarea class="form-control" rows="5" id="title" placeholder="Page Title"></textarea>
+    </form>
+  </div>
+</div>
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
 
 </body>
 </html>
