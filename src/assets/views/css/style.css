@@ -1,0 +1,17 @@
+.aps-field-spacing {
+  margin-bottom: 4px;
+}
+.aps-body-padding {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.navbar-default {
+  color: #ffffff;
+  background-color: #337ab7;
+}
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+.navbar-default .navbar-text > a {
+  color: #ffffff;
+}
