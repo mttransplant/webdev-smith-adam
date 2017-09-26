@@ -22,3 +22,6 @@
 .navbar-default .navbar-text > a {
   color: #ffffff;
 }
+.aps-list-spacing a:hover {
+  text-decoration: none;
+}
