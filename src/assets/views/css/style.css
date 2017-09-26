@@ -1,9 +1,16 @@
 .aps-field-spacing {
   margin-bottom: 4px;
 }
+.aps-list-spacing {
+  margin-bottom: 12px;
+}
 .aps-body-padding {
   padding-top: 70px;
   padding-bottom: 70px;
+}
+.aps-form-padding {
+  padding-left: 8px;
+  padding-right:20px;
 }
 .navbar-default {
   color: #ffffff;
