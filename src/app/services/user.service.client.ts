@@ -44,7 +44,7 @@ export class UserService {
       return user.username === username && user.password === password;
     });
   }
-  updateUser(userId, user) {
+  updateUser(userId: String, user: any) {
     for (let x = 0; x < this.users.length; x++) {
       const _user = this.users[x];
       if (_user._id === userId) {
@@ -54,7 +54,7 @@ export class UserService {
       }
     }
   }
-  deleteUser(userId) {
+  deleteUser(userId: String) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {
         this.users.splice(x, 1);

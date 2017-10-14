@@ -24,13 +24,13 @@ export class WebsiteService {
     'updateWebsite' : this.updateWebsite,
     'deleteWebsite' : this.deleteWebsite
   };
-  createWebsite(userId, website) {
+  createWebsite(userId: String, website: any) {
     website._id = Math.random();
     website.developerId = userId;
     this.websites.push(website);
     return website;
   }
-  findWebsitesByUser(userId) {
+  findWebsitesByUser(userId: String) {
     let foundSites = [];
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x].developerId === userId) {
@@ -39,12 +39,12 @@ export class WebsiteService {
     }
     return foundSites;
   }
-  findWebsiteById(websiteId) {
+  findWebsiteById(websiteId: String) {
     return this.websites.find(function(site) {
       return site._id === websiteId;
     });
   }
-  updateWebsite(websiteId, website) {
+  updateWebsite(websiteId: String, website: any) {
     for (let x = 0; x < this.websites.length; x++) {
       const _site = this.websites[x];
       if (_site._id === websiteId) {
@@ -53,7 +53,7 @@ export class WebsiteService {
       }
     }
   }
-  deleteWebsite(websiteId) {
+  deleteWebsite(websiteId: String) {
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x]._id === websiteId) {
         this.websites.splice(x, 1);
