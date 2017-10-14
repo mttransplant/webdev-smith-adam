@@ -1,3 +1,62 @@
-<p>
-  widget-image works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--back button-->
+    <p class="navbar-text pull-left">
+      <a href="widget-list.html" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick navbar-link">
+        <b>Widget Edit</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <a href="widget-list.html" class="navbar-link">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
+<div class="container-fluid aps-body-padding">
+  <form class="aps-form-padding" action="widget-list.html">
+    <label for="name">Name</label>
+    <input id="name" type="text" class="form-control aps-field-spacing"/>
+
+    <label for="widgetText">Text</label>
+    <input id="widgetText" type="text" class="form-control aps-field-spacing" value="US Senate Reaches Compromise on Emergency Zika Funding"/>
+
+    <label for="url">URL</label>
+    <input id="url" type="text" class="form-control aps-field-spacing" value="http://www.bassoonresource.org/images/bssnprog1.jpg"/>
+
+    <label for="width">Width</label>
+    <input id="width" type="text" class="form-control aps-field-spacing" value="100%"/>
+
+    <label for="file">Upload</label>
+    <input id="file" type="file" class="form-control aps-field-spacing"/>
+
+    <button type="reset" class="btn btn-primary btn-block">Upload Image</button>
+
+    <button type="submit" class="btn btn-danger btn-block">Delete</button>
+  </form>
+
+
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
