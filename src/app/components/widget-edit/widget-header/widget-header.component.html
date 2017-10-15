@@ -31,7 +31,7 @@
     <input id="name"
            name="name"
            #name="ngModel"
-           ngModel
+           [(ngModel)]="name"
            required
            type="text"
            placeholder="Widget Name"
@@ -44,7 +44,7 @@
     <input id="widgetText"
            name="widgetText"
            #widgetText="ngModel"
-           ngModel
+           [(ngModel)]="widgetText"
            required
            type="text"
            class="form-control aps-field-spacing"
@@ -57,7 +57,7 @@
     <input id="size"
            name="size"
            #size="ngModel"
-           ngModel
+           [(ngModel)]="size"
            required
            type="number"
            class="form-control aps-field-spacing"

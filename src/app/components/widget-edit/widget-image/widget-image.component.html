@@ -31,7 +31,7 @@
     <input id="name"
            name="name"
            #name="ngModel"
-           ngModel
+           [(ngModel)]="name"
            required
            type="text"
            placeholder="Image Name"
@@ -44,7 +44,7 @@
     <input id="widgetText"
            name="widgetText"
            #widgetText="ngModel"
-           ngModel
+           [(ngModel)]="widgetText"
            required
            type="text"
            class="form-control aps-field-spacing"
@@ -57,7 +57,7 @@
     <input id="url"
            name="url"
            #url="ngModel"
-           ngModel
+           [(ngModel)]="url"
            required
            type="text"
            class="form-control aps-field-spacing"
@@ -70,7 +70,7 @@
     <input id="width"
            name="width"
            #width="ngModel"
-           ngModel
+           [(ngModel)]="width"
            required
            type="text"
            class="form-control aps-field-spacing"
@@ -83,7 +83,7 @@
     <input id="file"
            name="file"
            #file="ngModel"
-           ngModel
+           [(ngModel)]="file"
            required
            type="file"
            class="form-control aps-field-spacing"/>

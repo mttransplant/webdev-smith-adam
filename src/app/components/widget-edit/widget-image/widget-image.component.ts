@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {WidgetService} from '../../../services/widget.service.client';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-widget-image',
@@ -10,23 +12,33 @@ export class WidgetImageComponent implements OnInit {
   @ViewChild('widgetImageForm') widgetImageForm: NgForm;
 
   // properties
+  widgetId: String;
+  widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
   name: String;
-  widgetText: String;
-  url: String;
-  width: String;
-  file: File;
 
-  constructor() { }
+  // widgetText: String;
+  // url: String;
+  // width: String;
+  // file: File;
+
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params
+      .subscribe(
+        (params: any) => {
+          this.widgetId = params['widgetId'];
+        }
+      );
+    this.widget = this.widgetService.findWidgetById(this.widgetId);
   }
 
   createImage() {
-    this.name = this.widgetImageForm.value.name;
-    this.widgetText = this.widgetImageForm.value.widgetText;
-    this.url = this.widgetImageForm.value.url;
-    this.width = this.widgetImageForm.value.width;
-    this.file = this.widgetImageForm.value.file;
+    this.widget.text = this.widgetImageForm.value.name;
+    this.widget.text = this.widgetImageForm.value.widgetText;
+    this.widget.url = this.widgetImageForm.value.url;
+    this.widget.width = this.widgetImageForm.value.width;
+    // this.widget.file = this.widgetImageForm.value.file;
   }
 
 }
