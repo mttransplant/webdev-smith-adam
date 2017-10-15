@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {WidgetService} from '../../../services/widget.service.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-widget-youtube',
-  templateUrl: './widget-youtube.component.html',
-  styleUrls: ['./widget-youtube.component.css']
+  selector: 'app-widget-header',
+  templateUrl: './widget-header.component.html',
+  styleUrls: ['./widget-header.component.css']
 })
-export class WidgetYoutubeComponent implements OnInit {
-  @ViewChild('widgetYoutubeForm') widgetYoutubeForm: NgForm;
+export class WidgetHeaderComponent implements OnInit {
+  @ViewChild('widgetHeaderForm') widgetHeaderForm: NgForm;
 
   // properties
   widgetId: String;
@@ -17,8 +17,7 @@ export class WidgetYoutubeComponent implements OnInit {
   name: String;
 
   // widgetText: String;
-  // url: String;
-  // width: String;
+  // size: Number;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
 
@@ -32,10 +31,10 @@ export class WidgetYoutubeComponent implements OnInit {
     this.widget = this.widgetService.findWidgetById(this.widgetId);
   }
 
-  createYoutube() {
-    this.widget.text = this.widgetYoutubeForm.value.name;
-    this.widget.text = this.widgetYoutubeForm.value.widgetText;
-    this.widget.url = this.widgetYoutubeForm.value.url;
-    this.widget.width = this.widgetYoutubeForm.value.width;
+  createHeader() {
+    this.widget.text = this.widgetHeaderForm.value.name;
+    this.widget.text = this.widgetHeaderForm.value.widgetText;
+    this.widget.size = this.widgetHeaderForm.value.size;
   }
+
 }
