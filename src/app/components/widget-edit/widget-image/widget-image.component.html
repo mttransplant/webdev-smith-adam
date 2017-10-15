@@ -25,25 +25,75 @@
 </nav>
 
 <div class="container-fluid aps-body-padding">
-  <form class="aps-form-padding" action="widget-list.html">
+  <form class="aps-form-padding"
+        (ngSubmit) = "createImage()" #widgetImageForm="ngForm">
     <label for="name">Name</label>
-    <input id="name" type="text" class="form-control aps-field-spacing"/>
+    <input id="name"
+           name="name"
+           #name="ngModel"
+           ngModel
+           required
+           type="text"
+           placeholder="Image Name"
+           class="form-control aps-field-spacing"/>
+    <span class="help-block" *ngIf="!name.valid && name.touched">
+      Please enter an image name!
+    </span>
 
     <label for="widgetText">Text</label>
-    <input id="widgetText" type="text" class="form-control aps-field-spacing" value="US Senate Reaches Compromise on Emergency Zika Funding"/>
+    <input id="widgetText"
+           name="widgetText"
+           #widgetText="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder="Image description"/>
+    <span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">
+      Please enter a description!
+    </span>
 
     <label for="url">URL</label>
-    <input id="url" type="text" class="form-control aps-field-spacing" value="http://www.bassoonresource.org/images/bssnprog1.jpg"/>
+    <input id="url"
+           name="url"
+           #url="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder=""/>
+    <span class="help-block" *ngIf="!url.valid && url.touched">
+      Please enter a url!
+    </span>
 
     <label for="width">Width</label>
-    <input id="width" type="text" class="form-control aps-field-spacing" value="100%"/>
+    <input id="width"
+           name="width"
+           #width="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder="100%"/>
+    <span class="help-block" *ngIf="!width.valid && width.touched">
+      Please enter a width as a percentage!
+    </span>
 
     <label for="file">Upload</label>
-    <input id="file" type="file" class="form-control aps-field-spacing"/>
+    <input id="file"
+           name="file"
+           #file="ngModel"
+           ngModel
+           required
+           type="file"
+           class="form-control aps-field-spacing"/>
 
-    <button type="reset" class="btn btn-primary btn-block">Upload Image</button>
+    <button type="submit"
+            [disabled]="!widgetImageForm.valid"
+            class="btn btn-primary btn-block">Upload Image</button>
 
-    <button type="submit" class="btn btn-danger btn-block">Delete</button>
+    <button type="reset"
+            class="btn btn-danger btn-block">Delete</button>
   </form>
 
 

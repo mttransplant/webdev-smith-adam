@@ -25,17 +25,50 @@
 </nav>
 
 <div class="container-fluid aps-body-padding">
-  <form class="aps-form-padding" action="widget-list.html">
+  <form class="aps-form-padding"
+        (ngSubmit)="createHeader()" #widgetHeaderForm="ngForm">
     <label for="name">Name</label>
-    <input id="name" type="text" class="form-control aps-field-spacing"/>
+    <input id="name"
+           name="name"
+           #name="ngModel"
+           ngModel
+           required
+           type="text"
+           placeholder="Widget Name"
+           class="form-control aps-field-spacing"/>
+    <span class="help-block" *ngIf="!name.valid && name.touched">
+      Please enter a widget name!
+    </span>
 
     <label for="widgetText">Text</label>
-    <input id="widgetText" type="text" class="form-control aps-field-spacing" value="US Senate Reaches Compromise on Emergency Zika Funding"/>
+    <input id="widgetText"
+           name="widgetText"
+           #widgetText="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder="Text of widget"/>
+    <span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">
+      Please enter some widget text!
+    </span>
 
     <label for="size">Size</label>
-    <input id="size" type="number" class="form-control aps-field-spacing" value="3"/>
-
-    <button type="submit" class="btn btn-danger btn-block">Delete</button>
+    <input id="size"
+           name="size"
+           #size="ngModel"
+           ngModel
+           required
+           type="number"
+           class="form-control aps-field-spacing"
+           placeholder="#"/>
+    <span class="help-block" *ngIf="!size.valid && size.touched">
+      Please enter a header size!
+    </span>
+    <button type="submit"
+            class="btn btn-primary btn-block"
+            [disabled]="!widgetHeaderForm.valid">Create Widget</button>
+    <button type="reset" class="btn btn-danger btn-block">Delete</button>
   </form>
 
 

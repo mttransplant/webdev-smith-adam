@@ -98,12 +98,33 @@
     </div>
   </div>
   <div class="container col-xs-12 col-sm-12 col-md-8">
-    <form class="aps-form-padding" action="#">
+    <form class="aps-form-padding"
+          (ngSubmit) = "newWebsite()" #websiteNewForm="ngForm">
       <label for="name">Name</label>
-      <input id="name" class="form-control" type="text" placeholder="Name"/>
+      <input id="name"
+             name="name"
+             #name="ngModel"
+             ngModel
+             required
+             class="form-control"
+             type="text"
+             placeholder="Website Name"/>
+      <span class="help-block" *ngIf="!name.valid && name.touched">
+        Please enter a website name!
+      </span>
 
       <label for="description">Description</label>
-      <textarea class="form-control" rows="5" id="description" placeholder="Description"></textarea>
+      <textarea class="form-control"
+                rows="5"
+                id="description"
+                name="description"
+                #description="ngModel"
+                ngModel
+                required
+                placeholder="Description"></textarea>
+      <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="!websiteNewForm.valid">Create Website</button>
     </form>
   </div>
 </div>
@@ -111,7 +132,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/:uid"">
+      <a routerLink="user/:uid">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

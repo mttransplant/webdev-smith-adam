@@ -25,20 +25,64 @@
 </nav>
 
 <div class="container-fluid aps-body-padding">
-  <form class="aps-form-padding" action="widget-list.html">
+  <form class="aps-form-padding"
+        (ngSubmit)="createYoutube()" #widgetYoutubeForm="ngForm">
     <label for="name">Name</label>
-    <input id="name" type="text" class="form-control aps-field-spacing"/>
+    <input id="name"
+           name="name"
+           #name="ngModel"
+           ngModel
+           required
+           type="text"
+           placeholder="Image Name"
+           class="form-control aps-field-spacing"/>
+    <span class="help-block" *ngIf="!name.valid && name.touched">
+      Please enter an image name!
+    </span>
 
     <label for="widgetText">Text</label>
-    <input id="widgetText" type="text" class="form-control aps-field-spacing"/>
+    <input id="widgetText"
+           name="widgetText"
+           #widgetText="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder="Image description"/>
+    <span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">
+      Please enter a description!
+    </span>
 
     <label for="url">URL</label>
-    <input id="url" type="text" class="form-control aps-field-spacing" value="https://www.youtube.com/watch?v=ZTu3c6ykf0U"/>
+    <input id="url"
+           name="url"
+           #url="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder=""/>
+    <span class="help-block" *ngIf="!url.valid && url.touched">
+      Please enter a url!
+    </span>
 
     <label for="width">Width</label>
-    <input id="width" type="text" class="form-control aps-field-spacing"/>
+    <input id="width"
+           name="width"
+           #width="ngModel"
+           ngModel
+           required
+           type="text"
+           class="form-control aps-field-spacing"
+           placeholder="100%"/>
+    <span class="help-block" *ngIf="!width.valid && width.touched">
+      Please enter a width as a percentage!
+    </span>
+    <button type="submit"
+            [disabled]="!widgetYoutubeForm.valid"
+            class="btn btn-primary btn-block">Create Widget</button>
 
-    <button type="submit" class="btn btn-danger btn-block">Delete</button>
+    <button type="reset" class="btn btn-danger btn-block">Delete</button>
   </form>
 
 

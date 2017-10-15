@@ -21,38 +21,69 @@
 
 
 <div class="container-fluid aps-body-padding">
-  <form>
+  <form (ngSubmit) = "updateProfile()" #profileForm="ngForm">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="walice">
-    </div>
-  </form>
+      <input type="text"
+             class="form-control"
+             name="username"
+             id="username"
+             ngModel
+             required
+             #username="ngModel"
+             placeholder="username">
+      <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+      </span>
 
-  <form>
-    <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" placeholder="alice.wonderland@unicorn.com">
+      <input type="email"
+             class="form-control"
+             id="email"
+             name="email"
+             ngModel
+             required
+             #email="ngModel"
+             placeholder="alice.wonderland@unicorn.com">
+      <span class="help-block" *ngIf="!email.valid && email.touched">
+      Please enter email!
+      </span>
+
+      <label for="firstName">First Name</label>
+      <input type="text"
+             class="form-control"
+             id="firstName"
+             name="firstName"
+             ngModel
+             required
+             #firstName="ngModel"
+             placeholder="Alice">
+      <span class="help-block" *ngIf="!firstName.valid && firstName.touched">
+      Please enter your first name!
+      </span>
+
+      <label for="lastName">Last Name</label>
+      <input type="text"
+             class="form-control"
+             id="lastName"
+             name="lastName"
+             ngModel
+             required
+             #lastName="ngModel"
+             placeholder="Wonderland">
+      <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
+      Please enter your last name!
+      </span>
     </div>
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!loginForm.valid">Update</button>
   </form>
 
-  <form>
-    <div class="form-group">
-      <label for="first-name">First Name</label>
-      <input type="text" class="form-control" id="first-name" placeholder="Alice">
-    </div>
-  </form>
-
-  <form>
-    <div class="form-group">
-      <label for="last-name">Last Name</label>
-      <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
-    </div>
-  </form>
   <a class="btn btn-primary btn-block"
      routerLink="user/:uid/website">Websites</a>
   <a class="btn btn-danger btn-block "
      routerLink="login">Logout</a>
-
 </div>
 
 <!-- Footer -->
@@ -63,6 +94,5 @@
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
-
   </div>
 </nav>

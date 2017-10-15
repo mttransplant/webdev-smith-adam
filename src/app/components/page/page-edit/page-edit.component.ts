@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-page-edit',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-edit.component.css']
 })
 export class PageEditComponent implements OnInit {
+  @ViewChild('pageEditForm') pageEditForm: NgForm;
+
+  // properties
+  name: String;
+  title: String;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  editPage() {
+    this.name = this.pageEditForm.value.name;
+    this.title = this.pageEditForm.value.title;
+  }
 }

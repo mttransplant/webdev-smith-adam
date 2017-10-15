@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-page-new',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-new.component.css']
 })
 export class PageNewComponent implements OnInit {
+  @ViewChild('pageNewForm') pageNewForm: NgForm;
+
+  // properties
+  name: String;
+  title: String;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  newPage() {
+    this.name = this.pageNewForm.value.name;
+    this.title = this.pageNewForm.value.title;
   }
 
 }

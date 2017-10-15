@@ -108,14 +108,42 @@
     </div>
   </div>
   <div class="container col-xs-12 col-sm-12 col-md-8">
-    <form class="aps-form-padding" action="page-list.html">
+    <form class="aps-form-padding"
+          (ngSubmit) = "editPage()"
+          #pageEditForm="ngForm">
+
       <label for="name">Name</label>
-      <input id="name" class="form-control aps-field-spacing" type="text" value="Blog Post"/>
+      <input id="name"
+             name="name"
+             #name="ngModel"
+             ngModel
+             required
+             class="form-control aps-field-spacing"
+             type="text"
+             placeholder="Blog Post"/>
+      <span class="help-block" *ngIf="!name.valid && name.touched">
+        Please enter a name!
+      </span>
 
       <label for="title">Title</label>
-      <input class="form-control aps-field-spacing" type="text" id="title" placeholder="Page Title"/>
+      <input class="form-control aps-field-spacing"
+             type="text"
+             id="title"
+             name="title"
+             #title="ngModel"
+             ngModel
+             required
+             placeholder="Page Title"/>
+      <span class="help-block" *ngIf="!title.valid && title.touched">
+        Please enter a title!
+      </span>
 
-      <button type="submit" class="btn btn-danger btn-block">Delete</button>
+      <button type="submit"
+              class="btn btn-primary btn-block"
+              [disabled]="!pageEditForm.valid">Save Changes</button>
+
+      <button type="reset"
+              class="btn btn-danger btn-block">Delete</button>
     </form>
   </div>
 </div>

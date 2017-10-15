@@ -6,33 +6,35 @@
 
   <h1>Login</h1>
 
-  <form (ngSubmit)="login()" #f="ngForm">
-
-    <input placeholder="username"
-           name="username"
-           type="text"
-           class="form-control aps-field-spacing"
-           ngModel
-           required
-           #username="ngModel"/>
-    <span class="help-block" *ngIf="!username.valid && username.touched">
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <div class="form-group">
+      <input placeholder="username"
+             name="username"
+             type="text"
+             class="form-control aps-field-spacing"
+             ngModel
+             required
+             #username="ngModel"/>
+      <span class="help-block" *ngIf="!username.valid && username.touched">
       Please enter username!
-    </span>
+      </span>
 
-    <input placeholder="password"
-           name="password"
-           type="password"
-           ngModel
-           required
-           #password="ngModel"
-           class="form-control aps-field-spacing"/>
-    <span class="help-block" *ngIf="!password.valid && password.touched">
+
+      <input placeholder="password"
+             name="password"
+             type="password"
+             ngModel
+             required
+             #password="ngModel"
+             class="form-control aps-field-spacing"/>
+      <span class="help-block" *ngIf="!password.valid && password.touched">
       Please enter password!
-    </span>
-    <button class="btn btn-primary btn-block"
-            type="submit"
-            [disabled]="!f.valid">Login</button>
-    <button class="btn btn-success btn-block" routerLink="register" >Register</button>
+      </span>
+      <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="!f.valid">Login</button>
+      <button class="btn btn-success btn-block" routerLink="register" >Register</button>
+    </div>
   </form>
 
 </div>

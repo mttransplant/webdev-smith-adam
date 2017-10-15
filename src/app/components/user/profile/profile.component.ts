@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  @ViewChild('profileForm') profileForm: NgForm;
+
+  // properties
+  username: String;
+  email: String;
+  firstName: String;
+  lastName: String;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateProfile() {
+    this.email = this.profileForm.value.email;
+    this.firstName = this.profileForm.value.firstName;
+    this.lastName = this.profileForm.value.lastName;
   }
 
 }

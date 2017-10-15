@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 
 export class LoginComponent implements OnInit {
-  @ViewChild('f') loginForm: NgForm;
+  @ViewChild('loginForm') loginForm: NgForm;
 
   // properties
   username: String;

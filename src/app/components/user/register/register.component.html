@@ -1,17 +1,50 @@
 <div class="container-fluid">
-  <h1>Register</h1>
-  <input placeholder="username"
-         type="text"
-         class="form-control aps-field-spacing"/>
-  <input placeholder="password"
-         type="password"
-         class="form-control aps-field-spacing"/>
-  <input placeholder="verify password"
-         type="password"
-         class="form-control aps-field-spacing"/>
-  <a class="btn btn-primary btn-block"
-     routerLink="user/:uid" >Register</a>
-  <a class="btn btn-danger btn-block"
-     routerLink="login">Cancel</a>
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
 
+  <h1>Register</h1>
+
+  <form (ngSubmit) = "register()" #registerForm="ngForm">
+    <div class="form-group">
+      <input placeholder="username"
+             type="text"
+             name="username"
+             ngModel
+             required
+             #username="ngModel"
+             class="form-control aps-field-spacing"/>
+      <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+      </span>
+
+      <input placeholder="password"
+             type="password"
+             name="password"
+             ngModel
+             required
+             #password="ngModel"
+             class="form-control aps-field-spacing"/>
+      <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+      </span>
+
+      <input placeholder="verify password"
+             type="password"
+             name="verification"
+             ngModel
+             required
+             #verification="ngModel"
+             class="form-control aps-field-spacing"/>
+      <span class="help-block" *ngIf="password.value != verification.value">
+      Passwords do not match!
+      </span>
+      <button class="btn btn-primary btn-block"
+              type="submit"
+         [disabled]="!registerForm.valid" >Register</button>
+      <a class="btn btn-danger btn-block"
+         routerLink="login">Cancel</a>
+    </div>
+  </form>
 </div>
