@@ -3,7 +3,7 @@
 
     <!--back button-->
     <p class="navbar-text pull-left">
-      <a routerLink="user/:uid/website" class="navbar-link">
+      <a routerLink="/user/{{userId}}/website" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -17,7 +17,7 @@
 
     <!--plus sign-->
     <p class="navbar-text pull-right">
-      <a routerLink="user/:uid/website/:wid/page/new" class="navbar-link">
+      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/new" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -26,6 +26,22 @@
 </nav>
 
 <div class="container-fluid aps-body-padding">
+  <div *ngFor="let page of pages">
+    <div class="row aps-list-spacing">
+      <div class="col-xs-11">
+        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
+      </div>
+      <div class="col-xs-1">
+        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{page._id}}">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!--
   <div class="row aps-list-spacing">
     <div class="col-xs-11">
       <a routerLink="user/:uid/website/:wid/page/:pid/widget">Blog Post</a>
@@ -36,6 +52,9 @@
       </a>
     </div>
   </div>
+
+
+
   <div class="row aps-list-spacing">
     <div class="col-xs-11">
       <a routerLink="user/:uid/website/:wid/page/:pid/widget">Blogs</a>
@@ -76,13 +95,13 @@
       </a>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/:uid">
+      <a routerLink="/user/{{userId}}">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
