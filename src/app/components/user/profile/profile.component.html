@@ -28,7 +28,7 @@
              class="form-control"
              name="username"
              id="username"
-             ngModel
+             [(ngModel)]="username"
              required
              #username="ngModel"
              placeholder="username">
@@ -41,7 +41,7 @@
              class="form-control"
              id="email"
              name="email"
-             ngModel
+             [(ngModel)]="email"
              required
              #email="ngModel"
              placeholder="alice.wonderland@unicorn.com">
@@ -54,7 +54,7 @@
              class="form-control"
              id="firstName"
              name="firstName"
-             ngModel
+             [(ngModel)]="firstName"
              required
              #firstName="ngModel"
              placeholder="Alice">
@@ -67,7 +67,7 @@
              class="form-control"
              id="lastName"
              name="lastName"
-             ngModel
+             [(ngModel)]="lastName"
              required
              #lastName="ngModel"
              placeholder="Wonderland">
