@@ -116,7 +116,7 @@
       <input id="name"
              name="name"
              #name="ngModel"
-             ngModel
+             [(ngModel)]="name"
              required
              class="form-control aps-field-spacing"
              type="text"
@@ -125,17 +125,17 @@
         Please enter a name!
       </span>
 
-      <label for="title">Title</label>
+      <label for="description">Description</label>
       <input class="form-control aps-field-spacing"
              type="text"
-             id="title"
-             name="title"
-             #title="ngModel"
-             ngModel
+             id="description"
+             name="description"
+             #description="ngModel"
+             [(ngModel)]="description"
              required
-             placeholder="Page Title"/>
-      <span class="help-block" *ngIf="!title.valid && title.touched">
-        Please enter a title!
+             placeholder="Page Description"/>
+      <span class="help-block" *ngIf="!description.valid && description.touched">
+        Please enter a description!
       </span>
 
       <button type="submit"
