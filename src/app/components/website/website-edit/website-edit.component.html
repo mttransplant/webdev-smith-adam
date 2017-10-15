@@ -105,7 +105,7 @@
       <input id="name"
              name="name"
              #name="ngModel"
-             ngModel
+             [(ngModel)]="name"
              required
              class="form-control aps-field-spacing"
              type="text"
@@ -120,7 +120,7 @@
                 id="description"
                 name="description"
                 #description="ngModel"
-                ngModel
+                [(ngModel)]="description"
                 required>Blogger is a blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which ws bought by Google in 2003. Generally, the blogs are hosted by Google at a subdomain of blogspot.com. Blogs can also be hosted in the registered custom domain of the blogger (like www.example.com).[4] A user can have up to 100 blogs per account.</textarea>
       <button class="btn btn-primary btn-block"
               type="submit"
