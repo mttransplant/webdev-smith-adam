@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {UserService} from '../../../services/user.service.client';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 
 export class LoginComponent implements OnInit {
-  @ViewChild('loginForm') loginForm: NgForm;
+  @ViewChild('f') loginForm: NgForm;
 
   // properties
   username: String;
@@ -16,15 +17,21 @@ export class LoginComponent implements OnInit {
   errorFlag: Boolean = false;
   errorMsg = 'Invalid username or password!';
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
 
   }
 
   login () {
+    this.errorFlag = false;
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
+    const user = this.userService.findUserByCredentials(this.username, this.password)
+    if(user) {
+      console.log(user);
+    } else {
+      this.errorFlag = true;
+    }
   }
-
 }

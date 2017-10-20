@@ -6,7 +6,7 @@
 
   <h1>Login</h1>
 
-  <form (ngSubmit)="login()" #loginForm="ngForm">
+  <form (ngSubmit)="login()" #f="ngForm">
     <div class="form-group">
       <input placeholder="username"
              name="username"
@@ -16,7 +16,7 @@
              required
              #username="ngModel"/>
       <span class="help-block" *ngIf="!username.valid && username.touched">
-      Please enter username!
+        Please enter username!
       </span>
 
 
@@ -28,7 +28,7 @@
              #password="ngModel"
              class="form-control aps-field-spacing"/>
       <span class="help-block" *ngIf="!password.valid && password.touched">
-      Please enter password!
+        Please enter password!
       </span>
       <button class="btn btn-primary btn-block"
               type="submit"

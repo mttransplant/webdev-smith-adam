@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { TestComponent } from './components/test/test.component';
-import {Routing} from './app.routing';
-import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
-import {TestService} from './services/test.service.client';
+// import { TestComponent } from './components/test/test.component';
+import { Routing } from './app.routing';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+// import { TestService } from './services/test.service.client';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -33,22 +33,22 @@ import { WidgetService} from './services/widget.service.client';
   declarations: [
     AppComponent,
     HomeComponent,
-    TestComponent,
+    // TestComponent,
     LoginComponent,
-    ProfileComponent,
-    RegisterComponent,
-    WebsiteNewComponent,
-    WebsiteEditComponent,
-    WebsiteListComponent,
-    PageNewComponent,
-    PageEditComponent,
-    PageListComponent,
-    WidgetChooserComponent,
-    WidgetEditComponent,
-    WidgetListComponent,
-    WidgetHeaderComponent,
-    WidgetImageComponent,
-    WidgetYoutubeComponent
+    // ProfileComponent,
+    // RegisterComponent,
+    // WebsiteNewComponent,
+    // WebsiteEditComponent,
+    // WebsiteListComponent,
+    // PageNewComponent,
+    // PageEditComponent,
+    // PageListComponent,
+    // WidgetChooserComponent,
+    // WidgetEditComponent,
+    // WidgetListComponent,
+    // WidgetHeaderComponent,
+    // WidgetImageComponent,
+    // WidgetYoutubeComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,7 @@ import { WidgetService} from './services/widget.service.client';
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService],
+  providers: [ /*TestService,*/ UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

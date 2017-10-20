@@ -43,9 +43,6 @@
 .aps-widget .glyphicon-cog {
   color: #337ab7;
 }
-input.ng-touched.ng-invalid {
-  background-color:red;
-}
-input.ng-touched.ng-valid {
-  background-color:green;
+input.ng-invalid.ng-touched {
+  background-color:pink;
 }
