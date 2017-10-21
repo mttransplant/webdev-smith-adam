@@ -24,8 +24,21 @@ export class WebsiteService {
     'updateWebsite' : this.updateWebsite,
     'deleteWebsite' : this.deleteWebsite
   };
+  findNextWebsiteId() {
+    let done = false;
+    let newId = 123;
+    while (!done) {
+      const min = Math.ceil(100);
+      const max = Math.floor(999);
+      newId = Math.floor(Math.random() * (max - min)) + min;
+      if (!this.findWebsiteById(newId.toString())) {
+        done = true;
+      }
+    }
+    return newId.toString();
+  }
   createWebsite(userId: string, website: any) {
-    website._id = Math.random();
+    website._id = this.findNextWebsiteId();
     website.developerId = userId;
     this.websites.push(website);
     return website;

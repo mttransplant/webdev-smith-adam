@@ -11,7 +11,8 @@ export class WebsiteListComponent implements OnInit {
 
   // parameters
   userId: string;
-  website: {_id: '', name: '', developerId: '', description: ''};
+  // website: {_id: string, name: string, developerId: string, description: string};
+  website = {_id: '', name: '', developerId: '', description: ''};
   websites = [this.website];
 
   constructor(private _websiteService: WebsiteService,

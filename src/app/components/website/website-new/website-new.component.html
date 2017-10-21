@@ -1,10 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="row">
+
       <!--back button-->
       <span class="col-xs-1 col-s-1 col-md-1">
         <p class="navbar-text">
-          <a routerLink="user/:uid/website" class="navbar-link">
+          <a routerLink="/user/{{userId}}/website" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -19,14 +20,14 @@
 
       <!--Plus Sign-->
       <span class="col-md-1 hidden-xs hidden-sm">
-        <a routerLink="user/:uid/website/new" class="navbar-text navbar-link">
+        <a routerLink="/user/{{userId}}/website/new" class="navbar-text navbar-link">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </span>
 
       <!--Close New Website-->
       <span class="col-md-1 hidden-xs hidden-sm">
-        <a routerLink="user/:uid/website" class="navbar-text navbar-link">
+        <a routerLink="/user/{{userId}}/website" class="navbar-text navbar-link">
           <span class="glyphicon glyphicon-remove"></span>
         </a>
       </span>
@@ -43,7 +44,7 @@
       <!--tick mark-->
       <span class="col-xs-1 col-s-1 col-md-1">
         <p class="navbar-text">
-          <a routerLink="user/:uid/website" class="navbar-link">
+          <a routerLink="/user/{{userId}}/website" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -52,87 +53,108 @@
   </div>
 </nav>
 
-<div class="row aps-body-padding">
-  <div class="container col-md-4 hidden-xs hidden-sm">
-    <div class="container">
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page">Address Book App</a>
+<div class="aps-body-padding">
+  <div class="row">
+    <div class="container col-md-4 hidden-xs hidden-sm">
+      <div class="container">
+        <div *ngFor="let website of websites">
+          <div class="row aps-list-spacing">
+            <div class="col-md-3">
+              <a routerLink="/user/{{userId}}/website/{{website._id}}/page">{{website.name}}</a>
+            </div>
+            <div class="col-md-1">
+              <a routerLink="/user/{{userId}}/website/{{website._id}}">
+                <span class="glyphicon glyphicon-cog"></span>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page">Blogger</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page">Blogging App</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page">Script Testing App</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
+
+
+        <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+        <!--<a routerLink="user/:uid/website/:wid/page">Address Book App</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+        <!--<a routerLink="user/:uid/website/:wid">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+        <!--<a routerLink="user/:uid/website/:wid/page">Blogger</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+        <!--<a routerLink="user/:uid/website/:wid">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+        <!--<a routerLink="user/:uid/website/:wid/page">Blogging App</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+        <!--<a routerLink="user/:uid/website/:wid">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+        <!--<a routerLink="user/:uid/website/:wid/page">Script Testing App</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+        <!--<a routerLink="user/:uid/website/:wid">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
       </div>
     </div>
-  </div>
-  <div class="container col-xs-12 col-sm-12 col-md-8">
-    <form class="aps-form-padding"
-          (ngSubmit) = "newWebsite()" #websiteNewForm="ngForm">
-      <label for="name">Name</label>
-      <input id="name"
-             name="name"
-             #name="ngModel"
-             ngModel
-             required
-             class="form-control"
-             type="text"
-             placeholder="Website Name"/>
-      <span class="help-block" *ngIf="!name.valid && name.touched">
+    <div class="container col-xs-12 col-sm-12 col-md-8">
+      <form class="aps-form-padding"
+            (ngSubmit) = "newWebsite()"
+            #websiteNewForm="ngForm">
+        <label for="name">Name</label>
+        <input id="name"
+               name="name"
+               #name="ngModel"
+               ngModel
+               required
+               class="form-control"
+               type="text"
+               placeholder="Website Name"/>
+        <span class="help-block" *ngIf="!name.valid && name.touched">
         Please enter a website name!
       </span>
 
-      <label for="description">Description</label>
-      <textarea class="form-control"
-                rows="5"
-                id="description"
-                name="description"
-                #description="ngModel"
-                ngModel
-                required
-                placeholder="Description"></textarea>
-      <button class="btn btn-primary btn-block"
-              type="submit"
-              [disabled]="!websiteNewForm.valid">Create Website</button>
-    </form>
+        <label for="description">Description</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="description"
+                  name="description"
+                  #description="ngModel"
+                  ngModel
+                  required
+                  placeholder="Description"></textarea>
+        <button class="btn btn-primary btn-block"
+                type="submit"
+                [disabled]="!websiteNewForm.valid">Create Website</button>
+      </form>
+    </div>
   </div>
+
+
 </div>
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/:uid">
+      <a routerLink="/user/{{userId}}">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
