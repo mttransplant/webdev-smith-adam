@@ -11,9 +11,11 @@ export class WebsiteListComponent implements OnInit {
 
   // parameters
   userId: String;
-  websites = [{_id: '', name: '', developerId: '', description: ''}];
+  website: {_id: '', name: '', developerId: '', description: ''};
+  websites = [this.website];
 
-  constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute) { }
+  constructor(private _websiteService: WebsiteService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params

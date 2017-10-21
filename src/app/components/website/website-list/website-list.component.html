@@ -3,21 +3,21 @@
 
     <!--back button-->
     <p class="navbar-text pull-left">
-      <a routerLink="/user/{{websites[0].developerId}}" class="navbar-link">
+      <a routerLink="/user/{{userId}}" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
 
     <!--heading on the nav bar-->
     <p class="navbar-header pull-left">
-      <a class="navbar-brand thick navbar-link">
+      <span class="navbar-brand thick navbar-link">
         <b>Websites</b>
-      </a>
+      </span>
     </p>
 
     <!--plus sign-->
     <p class="navbar-text pull-right">
-      <a routerLink="user/{{userId}}/website/new" class="navbar-link">
+      <a routerLink="/user/{{userId}}/website/new" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -39,55 +39,6 @@
     </div>
   </div>
 </div>
-
-  <!--
-  <div class="row aps-list-spacing">
-    <div class="col-xs-11">
-      <a routerLink="user/:uid/website/:wid/page">Address Book App</a>
-    </div>
-    <div class="col-xs-1">
-      <a routerLink="user/:uid/website/:wid">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-    </div>
-  </div>
-
-
-  <div class="row aps-list-spacing">
-    <div class="col-xs-11">
-      <a routerLink="user/:uid/website/:wid/page">Blogger</a>
-    </div>
-    <div class="col-xs-1">
-      <a routerLink="user/:uid/website/:wid">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-    </div>
-  </div>
-
-
-  <div class="row aps-list-spacing">
-    <div class="col-xs-11">
-      <a routerLink="user/:uid/website/:wid/page">Blogging App</a>
-    </div>
-    <div class="col-xs-1">
-      <a routerLink="user/:uid/website/:wid">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-    </div>
-  </div>
-
-
-  <div class="row aps-list-spacing">
-    <div class="col-xs-11">
-      <a routerLink="user/:uid/website/:wid/page">Script Testing App</a>
-    </div>
-    <div class="col-xs-1">
-      <a routerLink="user/:uid/website/:wid">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-    </div>
-  </div>
-</div> -->
 
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
