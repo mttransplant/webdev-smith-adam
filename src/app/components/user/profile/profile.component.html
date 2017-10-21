@@ -21,32 +21,23 @@
 
 
 <div class="container-fluid aps-body-padding">
-  <form (ngSubmit) = "updateProfile()" #profileForm="ngForm">
+  <div *ngIf="showMessage"
+       class="alert alert-success">
+    {{msg}}
+  </div>
+
+  <form (ngSubmit) = "updateProfile()" #f="ngForm">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text"
              class="form-control"
              name="username"
              id="username"
-             [(ngModel)]="username"
+             [(ngModel)]="user.username"
              required
-             #username="ngModel"
              placeholder="username">
-      <span class="help-block" *ngIf="!username.valid && username.touched">
+      <span class="help-block" *ngIf="!user.username.valid && user.username.touched">
       Please enter username!
-      </span>
-
-      <label for="email">Email address</label>
-      <input type="email"
-             class="form-control"
-             id="email"
-             name="email"
-             [(ngModel)]="email"
-             required
-             #email="ngModel"
-             placeholder="alice.wonderland@unicorn.com">
-      <span class="help-block" *ngIf="!email.valid && email.touched">
-      Please enter email!
       </span>
 
       <label for="firstName">First Name</label>
@@ -54,11 +45,11 @@
              class="form-control"
              id="firstName"
              name="firstName"
-             [(ngModel)]="firstName"
+             [(ngModel)]="user.firstName"
              required
              #firstName="ngModel"
              placeholder="Alice">
-      <span class="help-block" *ngIf="!firstName.valid && firstName.touched">
+      <span class="help-block" *ngIf="!user.firstName.valid && user.firstName.touched">
       Please enter your first name!
       </span>
 
@@ -67,21 +58,35 @@
              class="form-control"
              id="lastName"
              name="lastName"
-             [(ngModel)]="lastName"
+             [(ngModel)]="user.lastName"
              required
              #lastName="ngModel"
              placeholder="Wonderland">
-      <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
+      <span class="help-block" *ngIf="!user.lastName.valid && user.lastName.touched">
       Please enter your last name!
       </span>
+
+      <label for="email">Email address</label>
+      <input type="email"
+             class="form-control"
+             name="email"
+             id="email"
+             [(ngModel)]="user.email"
+             required
+             placeholder="alice.wonderland@unicorn.com">
+      <span class="help-block" *ngIf="!user.email.valid && user.email.touched">
+      Please enter email!
+      </span>
+      <br/>
+
+      <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="!f.valid">Update</button>
     </div>
-    <button class="btn btn-primary btn-block"
-            type="submit"
-            [disabled]="!loginForm.valid">Update</button>
   </form>
 
   <a class="btn btn-primary btn-block"
-     routerLink="user/:uid/website">Websites</a>
+     routerLink="/user/{{userId}}/website">Websites</a>
   <a class="btn btn-danger btn-block "
      routerLink="login">Logout</a>
 </div>

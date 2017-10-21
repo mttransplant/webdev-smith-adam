@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +9,17 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  @ViewChild('profileForm') profileForm: NgForm;
+  @ViewChild('f') profileForm: NgForm;
 
   // properties
   userId: String;
   user = {_id: '', username: '', password: '', firstName: '', lastName: '', email: ''};
-  username: String;
+  showMessage: Boolean = false;
+  msg: String;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) { }
+  constructor(private userService: UserService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -26,13 +29,15 @@ export class ProfileComponent implements OnInit {
         }
       );
     this.user = this.userService.findUserById(this.userId);
-    this.username = this.user['username'];
   }
 
   updateProfile() {
     this.user.email = this.profileForm.value.email;
     this.user.firstName = this.profileForm.value.firstName;
     this.user.lastName = this.profileForm.value.lastName;
+    console.log(this.user);
+    this.msg = 'Update Successful!';
+    this.showMessage = true;
   }
 
 }
