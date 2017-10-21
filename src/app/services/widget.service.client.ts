@@ -24,8 +24,21 @@ export class WidgetService {
     'updateWidget' : this.updateWidget,
     'deletewidget' : this.deletewidget
   };
+  findNextWidgetId() {
+    let foundNewId = false;
+    let newId = 123;
+    while (!foundNewId) {
+      const min = Math.ceil(100);
+      const max = Math.floor(999);
+      newId = Math.floor(Math.random() * (max - min)) + min;
+      if (!this.findWidgetById(newId.toString())) {
+        foundNewId = true;
+      }
+    }
+    return newId.toString();
+  }
   createWidget(pageId: String, widget: any) {
-    widget._id = Math.random();
+    widget._id = this.findNextWidgetId();
     widget.pageId = pageId;
     this.widgets.push(widget);
     return widget;

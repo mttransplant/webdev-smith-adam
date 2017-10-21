@@ -7,7 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Routing } from './app.routing';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-// import { TestService } from './services/test.service.client';
+import { TestService } from './services/test.service.client';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -45,7 +45,7 @@ import { WidgetService} from './services/widget.service.client';
     PageListComponent,
     // WidgetChooserComponent,
     // WidgetEditComponent,
-    // WidgetListComponent,
+    WidgetListComponent,
     // WidgetHeaderComponent,
     // WidgetImageComponent,
     // WidgetYoutubeComponent
@@ -57,7 +57,7 @@ import { WidgetService} from './services/widget.service.client';
     Routing
   ],
   // Client Side services here
-  providers: [ /*TestService,*/ UserService, WebsiteService, PageService, WidgetService],
+  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

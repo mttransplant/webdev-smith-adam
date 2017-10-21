@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute} from '@angular/router';
-import {WebsiteService} from '../../../services/website.service.client';
 import {WidgetService} from '../../../services/widget.service.client';
 
 @Component({
@@ -18,20 +16,18 @@ export class WidgetListComponent implements OnInit {
   widgets = [{_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''}];
 
   constructor(private _widgetService: WidgetService,
-              private _pageService: PageService,
-              private activatedRoute: ActivatedRoute,
-              private _websiteService: WebsiteService) { }
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
           this.pageId = params['pageId'];
+          this.websiteId = params['websiteId'];
+          this.userId = params['userId'];
         }
       );
     this.widgets = this._widgetService.findWidgetByPageId(this.pageId);
-    this.websiteId = this._pageService.findPageById(this.pageId).websiteId;
-    this.userId = this._websiteService.findWebsiteById(this.websiteId).developerId;
   }
 
 }
