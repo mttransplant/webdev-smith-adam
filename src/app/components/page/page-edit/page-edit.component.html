@@ -1,6 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="row">
+
       <!--back button-->
       <span class="col-xs-1 col-s-1 col-md-1">
         <p class="navbar-text">
@@ -10,7 +11,7 @@
         </p>
       </span>
 
-      <!-- Websites -->
+      <!-- Pages -->
       <span class="col-md-2 hidden-xs hidden-sm">
         <a class="navbar-brand thick navbar-link">
           <b>Pages</b>
@@ -59,7 +60,7 @@
         <div *ngFor="let page of pages">
           <div class="row aps-list-spacing">
             <div class="col-md-3">
-              <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">{{page.name}}</a>
+              <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
             </div>
             <div class="col-md-1">
               <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{page._id}}">
@@ -89,16 +90,14 @@
         </span>
 
         <label for="description">Description</label>
-        <input class="form-control aps-field-spacing"
-               type="text"
-               id="description"
-               name="description"
-               [(ngModel)]="description"
-               required
-               placeholder="Page Description"/>
-        <span class="help-block" *ngIf="!description.valid && description.touched">
-        Please enter a description!
-        </span>
+        <textarea class="form-control aps-field-spacing"
+                  rows="5"
+                  type="text"
+                  id="description"
+                  name="description"
+                  [(ngModel)]="description"
+                  required
+                  placeholder="Page Description"></textarea>
 
         <button type="submit"
                 class="btn btn-primary btn-block"

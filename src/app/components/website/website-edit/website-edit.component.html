@@ -60,10 +60,10 @@
         <div *ngFor="let website of websites">
           <div class="row aps-list-spacing">
             <div class="col-md-3">
-              <a routerLink="/user/{{userId}}/website/{{websiteId}}/page">{{website.name}}</a>
+              <a routerLink="/user/{{userId}}/website/{{website._id}}/page">{{website.name}}</a>
             </div>
             <div class="col-md-1">
-              <a routerLink="/user/{{userId}}/website/{{websiteId}}">
+              <a routerLink="/user/{{userId}}/website/{{website._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
               </a>
             </div>

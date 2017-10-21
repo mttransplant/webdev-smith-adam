@@ -1,10 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="row">
+
       <!--back button-->
       <span class="col-xs-1 col-s-1 col-md-1">
         <p class="navbar-text">
-          <a routerLink="user/:uid/website/:wid/page" class="navbar-link">
+          <a routerLink="/user/{{userId}}/website/{{websiteId}}/page" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -19,14 +20,14 @@
 
       <!--Plus Sign-->
       <span class="col-md-1 hidden-xs hidden-sm">
-        <a routerLink="user/:uid/website/:wid/page/new" class="navbar-text navbar-link">
+        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/new" class="navbar-text navbar-link">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </span>
 
       <!--Close New Page-->
       <span class="col-md-1 hidden-xs hidden-sm">
-        <a routerLink="user/:uid/website/:wid/page" class="navbar-text navbar-link">
+        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page" class="navbar-text navbar-link">
           <span class="glyphicon glyphicon-remove"></span>
         </a>
       </span>
@@ -35,15 +36,15 @@
       <span class="col-xs-10 col-s-10 col-md-6">
         <p class="navbar-header">
           <a class="navbar-brand thick navbar-link">
-        <b>New Page</b>
-      </a>
+            <b>New Page</b>
+          </a>
         </p>
       </span>
 
       <!--tick mark-->
       <span class="col-xs-1 col-s-1 col-md-1">
         <p class="navbar-text">
-          <a routerLink="user/:uid/website/:wid/page" class="navbar-link">
+          <a routerLink="/user/{{userId}}/website/{{websiteId}}/page" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -52,99 +53,132 @@
   </div>
 </nav>
 
-<div class="row aps-body-padding">
-  <div class="container col-md-4 hidden-xs hidden-sm">
-    <div class="container">
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget">Blog Post</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid/page/:pid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget">Blogs</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid/page/:pid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget">Home</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid/page/:pid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget">About</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid/page/:pid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row aps-list-spacing">
-        <div class="col-md-3">
-          <a routerLink="user/:uid/website/:wid/page/:pid/widget">Contact Us</a>
-        </div>
-        <div class="col-md-1">
-          <a routerLink="user/:uid/website/:wid/page/:pid">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
+<div class="aps-body-padding">
+  <div class="row">
+    <div class="container-fluid col-md-4 hidden-xs hidden-sm">
+      <div class="container">
+        <div *ngFor="let page of pages">
+          <div class="row aps-list-spacing">
+            <div class="col-md-3">
+              <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">{{page.name}}</a>
+            </div>
+            <div class="col-md-1">
+              <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{page._id}}">
+                <span class="glyphicon glyphicon-cog"></span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container col-xs-12 col-sm-12 col-md-8">
-    <form class="aps-form-padding"
-          (ngSubmit) = "newPage()"
-          #pageNewForm="ngForm">
 
-      <label for="name">Name</label>
-      <input id="name"
-             name="name"
-             #name="ngModel"
-             ngModel
-             required
-             class="form-control aps-field-spacing"
-             type="text"
-             placeholder="Page Name"/>
-      <span class="help-block" *ngIf="!name.valid && name.touched">
+
+
+
+  <!--<div class="container col-md-4 hidden-xs hidden-sm">-->
+    <!--<div class="container">-->
+      <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid/widget">Blog Post</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid">-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!---->
+      <!---->
+      <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid/widget">Blogs</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid">-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!---->
+      <!---->
+      <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid/widget">Home</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid">-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!---->
+      <!---->
+      <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid/widget">About</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid">-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!---->
+      <!---->
+      <!--<div class="row aps-list-spacing">-->
+        <!--<div class="col-md-3">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid/widget">Contact Us</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-1">-->
+          <!--<a routerLink="user/:uid/website/:wid/page/:pid">-->
+            <!--<span class="glyphicon glyphicon-cog"></span>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!---->
+      <!---->
+    <!--</div>-->
+  <!--</div>-->
+    <div class="container col-xs-12 col-sm-12 col-md-8">
+      <form class="aps-form-padding"
+            (ngSubmit) = "newPage()"
+            #pageNewForm="ngForm">
+
+        <label for="name">Name</label>
+        <input id="name"
+               name="name"
+               #name="ngModel"
+               ngModel
+               required
+               class="form-control aps-field-spacing"
+               type="text"
+               placeholder="Page Name"/>
+        <span class="help-block" *ngIf="!name.valid && name.touched">
         Please enter a name!
-      </span>
+        </span>
 
-      <label for="title">Title</label>
-      <textarea class="form-control"
-                rows="5"
-                id="title"
-                name="title"
-                #title="ngModel"
-                ngModel
-                required
-                placeholder="Page Title"></textarea>
-      <button class="btn btn-primary btn-block"
-              type="submit"
-              [disabled]="!pageNewForm.valid">Create</button>
-    </form>
+        <label for="description">Description</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="description"
+                  name="description"
+                  #description="ngModel"
+                  ngModel
+                  required
+                  placeholder="Page Description"></textarea>
+        <button class="btn btn-primary btn-block"
+                type="submit"
+                [disabled]="!pageNewForm.valid">Create</button>
+      </form>
+    </div>
   </div>
 </div>
+
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/:uid">
+      <a routerLink="/user/{{userId}}">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

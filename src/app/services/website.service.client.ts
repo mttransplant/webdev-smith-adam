@@ -25,14 +25,14 @@ export class WebsiteService {
     'deleteWebsite' : this.deleteWebsite
   };
   findNextWebsiteId() {
-    let done = false;
+    let foundNewId = false;
     let newId = 123;
-    while (!done) {
+    while (!foundNewId) {
       const min = Math.ceil(100);
       const max = Math.floor(999);
       newId = Math.floor(Math.random() * (max - min)) + min;
       if (!this.findWebsiteById(newId.toString())) {
-        done = true;
+        foundNewId = true;
       }
     }
     return newId.toString();

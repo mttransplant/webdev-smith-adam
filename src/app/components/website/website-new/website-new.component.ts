@@ -33,22 +33,22 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   newWebsite() {
-    console.log('website form name', this.websiteNewForm.value.name);
-    console.log('website form description', this.websiteNewForm.value.description);
+    // console.log('website form name', this.websiteNewForm.value.name);
+    // console.log('website form description', this.websiteNewForm.value.description);
 
     this.name = this.websiteNewForm.value.name;
     this.description = this.websiteNewForm.value.description;
-    console.log('internal name', this.name);
-    console.log('internal description', this.description);
-    console.log(this.websites);
-    console.log(this.website);
+    // console.log('internal name', this.name);
+    // console.log('internal description', this.description);
+    // console.log(this.websites);
+    // console.log(this.website);
 
     this.website.name = this.name;
     this.website.description = this.description;
-    console.log(this.website);
+    // console.log(this.website);
 
     this.websiteService.createWebsite(this.userId, this.website);
-    console.log(this.websiteService.websites);
+    // console.log(this.websiteService.websites);
     this.router.navigate(['/user/' + this.userId + '/website']);
   }
 

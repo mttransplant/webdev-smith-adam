@@ -20,8 +20,21 @@ export class PageService {
     'updatePage' : this.updatePage,
     'deletePage' : this.deletePage
   };
+  findNextPageId() {
+    let foundNewId = false;
+    let newId = 123;
+    while (!foundNewId) {
+      const min = Math.ceil(100);
+      const max = Math.floor(999);
+      newId = Math.floor(Math.random() * (max - min)) + min;
+      if (!this.findPageById(newId.toString())) {
+        foundNewId = true;
+      }
+    }
+    return newId.toString();
+  }
   createPage(websiteId: string, page: any) {
-    page._id = Math.random();
+    page._id = this.findNextPageId();
     page.websiteId = websiteId;
     this.pages.push(page);
     return page;

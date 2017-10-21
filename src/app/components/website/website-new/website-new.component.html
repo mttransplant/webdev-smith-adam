@@ -36,8 +36,8 @@
       <span class="col-xs-10 col-s-10 col-md-6">
         <p class="navbar-header">
           <a class="navbar-brand thick navbar-link">
-        <b>New Website</b>
-      </a>
+           <b>New Website</b>
+          </a>
         </p>
       </span>
 
@@ -69,52 +69,9 @@
             </div>
           </div>
         </div>
-
-
-        <!--<div class="row aps-list-spacing">-->
-        <!--<div class="col-md-3">-->
-        <!--<a routerLink="user/:uid/website/:wid/page">Address Book App</a>-->
-        <!--</div>-->
-        <!--<div class="col-md-1">-->
-        <!--<a routerLink="user/:uid/website/:wid">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row aps-list-spacing">-->
-        <!--<div class="col-md-3">-->
-        <!--<a routerLink="user/:uid/website/:wid/page">Blogger</a>-->
-        <!--</div>-->
-        <!--<div class="col-md-1">-->
-        <!--<a routerLink="user/:uid/website/:wid">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row aps-list-spacing">-->
-        <!--<div class="col-md-3">-->
-        <!--<a routerLink="user/:uid/website/:wid/page">Blogging App</a>-->
-        <!--</div>-->
-        <!--<div class="col-md-1">-->
-        <!--<a routerLink="user/:uid/website/:wid">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row aps-list-spacing">-->
-        <!--<div class="col-md-3">-->
-        <!--<a routerLink="user/:uid/website/:wid/page">Script Testing App</a>-->
-        <!--</div>-->
-        <!--<div class="col-md-1">-->
-        <!--<a routerLink="user/:uid/website/:wid">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-        <!--</div>-->
-        <!--</div>-->
-
-
       </div>
     </div>
+
     <div class="container col-xs-12 col-sm-12 col-md-8">
       <form class="aps-form-padding"
             (ngSubmit) = "newWebsite()"
@@ -140,16 +97,15 @@
                   #description="ngModel"
                   ngModel
                   required
-                  placeholder="Description"></textarea>
+                  placeholder="Website Description"></textarea>
         <button class="btn btn-primary btn-block"
                 type="submit"
                 [disabled]="!websiteNewForm.valid">Create Website</button>
       </form>
     </div>
   </div>
-
-
 </div>
+
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
