@@ -9,9 +9,9 @@ export class PageService {
 
   constructor() {}
   pages = [
-    { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem' },
-    { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem' },
-    { _id: '543', name: 'Post 3', websiteId: '456', description: 'Lorem' }
+    { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem Post 1 Ipsum' },
+    { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem Post 2 Ipsum' },
+    { _id: '543', name: 'Post 3', websiteId: '456', description: 'Lorem Post 3 Ipsum' }
   ];
   api = {
     'createPage' : this.createPage,
@@ -20,13 +20,13 @@ export class PageService {
     'updatePage' : this.updatePage,
     'deletePage' : this.deletePage
   };
-  createPage(websiteId: String, page: any) {
+  createPage(websiteId: string, page: any) {
     page._id = Math.random();
     page.websiteId = websiteId;
     this.pages.push(page);
     return page;
   }
-  findPagesByWebsiteId(websiteId: String) {
+  findPagesByWebsiteId(websiteId: string) {
     let foundPages = [];
     for (let x = 0; x < this.pages.length; x++) {
       if (this.pages[x].websiteId === websiteId) {
@@ -35,12 +35,12 @@ export class PageService {
     }
     return foundPages;
   }
-  findPageById(pageId: String) {
+  findPageById(pageId: string) {
     return this.pages.find(function(page) {
       return page._id === pageId;
     });
   }
-  updatePage(pageId: String, page: any) {
+  updatePage(pageId: string, page: any) {
     for (let x = 0; x < this.pages.length; x++) {
       const _page = this.pages[x];
       if (_page._id === pageId) {
@@ -49,7 +49,7 @@ export class PageService {
       }
     }
   }
-  deletePage(pageId: String) {
+  deletePage(pageId: string) {
     for (let x = 0; x < this.pages.length; x++) {
       if (this.pages[x]._id === pageId) {
         this.pages.splice(x, 1);

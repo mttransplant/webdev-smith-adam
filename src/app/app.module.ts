@@ -41,7 +41,7 @@ import { WidgetService} from './services/widget.service.client';
     WebsiteEditComponent,
     WebsiteListComponent,
     // PageNewComponent,
-    // PageEditComponent,
+    PageEditComponent,
     PageListComponent,
     // WidgetChooserComponent,
     // WidgetEditComponent,
