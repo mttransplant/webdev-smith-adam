@@ -12,9 +12,9 @@ export class WidgetHeaderComponent implements OnInit {
   @ViewChild('widgetHeaderForm') widgetHeaderForm: NgForm;
 
   // properties
-  widgetId: String;
+  widgetId: string;
   widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
-  name: String;
+  name: string;
 
   // widgetText: String;
   // size: Number;

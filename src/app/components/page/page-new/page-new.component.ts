@@ -10,8 +10,8 @@ export class PageNewComponent implements OnInit {
   @ViewChild('pageNewForm') pageNewForm: NgForm;
 
   // properties
-  name: String;
-  title: String;
+  name: string;
+  title: string;
 
   constructor() { }
 

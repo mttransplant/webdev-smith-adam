@@ -12,9 +12,9 @@ export class WidgetImageComponent implements OnInit {
   @ViewChild('widgetImageForm') widgetImageForm: NgForm;
 
   // properties
-  widgetId: String;
+  widgetId: string;
   widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
-  name: String;
+  name: string;
 
   // widgetText: String;
   // url: String;

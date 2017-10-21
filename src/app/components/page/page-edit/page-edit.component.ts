@@ -12,10 +12,10 @@ export class PageEditComponent implements OnInit {
   @ViewChild('pageEditForm') pageEditForm: NgForm;
 
   // properties
-  pageId: String;
+  pageId: string;
   page = {_id: '', name: '', websiteId: '', description: ''};
-  name: String;
-  title: String;
+  name: string;
+  title: string;
 
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute) { }
 

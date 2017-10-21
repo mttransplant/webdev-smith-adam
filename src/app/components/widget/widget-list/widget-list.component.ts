@@ -12,9 +12,9 @@ import {WidgetService} from '../../../services/widget.service.client';
 export class WidgetListComponent implements OnInit {
 
   // parameters
-  userId: String;
-  websiteId: String;
-  pageId: String;
+  userId: string;
+  websiteId: string;
+  pageId: string;
   widgets = [{_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''}];
 
   constructor(private _widgetService: WidgetService,

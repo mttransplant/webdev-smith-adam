@@ -11,8 +11,8 @@ import {WebsiteService} from '../../../services/website.service.client';
 export class PageListComponent implements OnInit {
 
   // parameters
-  userId: String;
-  websiteId: String;
+  userId: string;
+  websiteId: string;
   pages = [{_id: '', name: '', websiteId: '', description: ''}];
 
   constructor(private _pageService: PageService, private activatedRoute: ActivatedRoute, private _websiteService: WebsiteService) { }
