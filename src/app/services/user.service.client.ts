@@ -31,24 +31,24 @@ export class UserService {
     this.users.push(user);
     return user;
   }
-  findUserById(userId: String) {
+  findUserById(userId: string) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {
         return this.users[x];
       }
     }
   }
-  findUserByUsername(username: String) {
+  findUserByUsername(username: string) {
     return this.users.find(function (user) {
       return user.username === username;
     });
   }
-  findUserByCredentials(username: String, password: String) {
+  findUserByCredentials(username: string, password: string) {
     return this.users.find(function(user) {
       return user.username === username && user.password === password;
     });
   }
-  updateUser(userId: String, user: any) {
+  updateUser(userId: string, user: any) {
     for (let x = 0; x < this.users.length; x++) {
       const _user = this.users[x];
       if (_user._id === userId) {

@@ -11,7 +11,7 @@ import {RegisterComponent} from './components/user/register/register.component';
 import {ProfileComponent} from './components/user/profile/profile.component';
 import {WebsiteListComponent} from './components/website/website-list/website-list.component';
 // import {WebsiteNewComponent} from './components/website/website-new/website-new.component';
-// import {WebsiteEditComponent} from './components/website/website-edit/website-edit.component';
+import {WebsiteEditComponent} from './components/website/website-edit/website-edit.component';
 // import {PageListComponent} from './components/page/page-list/page-list.component';
 // import {PageNewComponent} from './components/page/page-new/page-new.component';
 // import {PageEditComponent} from './components/page/page-edit/page-edit.component';
@@ -29,13 +29,13 @@ const APP_ROUTES: Routes = [
   {path: 'user/:userId', component: ProfileComponent},
   {path: 'user/:userId/website', component: WebsiteListComponent},
   // {path: 'user/:userId/website/new', component: WebsiteNewComponent},
-  // {path: 'user/:userId/website/:wid', component: WebsiteEditComponent},
-  // {path: 'user/:userId/website/:wid/page', component: PageListComponent},
-  // {path: 'user/:userId/website/:wid/page/new', component: PageNewComponent},
-  // {path: 'user/:userId/website/:wid/page/:pid', component: PageEditComponent},
-  // {path: 'user/:userId/website/:wid/page/:pid/widget', component: WidgetListComponent},
-  // {path: 'user/:userId/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
-  // {path: 'user/:userId/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent}
+  {path: 'user/:userId/website/:websiteId', component: WebsiteEditComponent},
+  // {path: 'user/:userId/website/:websiteId/page', component: PageListComponent},
+  // {path: 'user/:userId/website/:websiteId/page/new', component: PageNewComponent},
+  // {path: 'user/:userId/website/:websiteId/page/:pid', component: PageEditComponent},
+  // {path: 'user/:userId/website/:websiteId/page/:pid/widget', component: WidgetListComponent},
+  // {path: 'user/:userId/website/:websiteId/page/:pid/widget/new', component: WidgetChooserComponent},
+  // {path: 'user/:userId/website/:websiteId/page/:pid/widget/:wgid', component: WidgetEditComponent}
 ];
 
 // Export the routes as module providers

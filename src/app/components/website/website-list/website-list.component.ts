@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class WebsiteListComponent implements OnInit {
 
   // parameters
-  userId: String;
+  userId: string;
   website: {_id: '', name: '', developerId: '', description: ''};
   websites = [this.website];
 

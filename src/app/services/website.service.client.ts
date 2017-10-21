@@ -9,13 +9,13 @@ export class WebsiteService {
 
   constructor() {}
   websites = [
-    { _id: '123', name: 'Facebook',    developerId: '456', description: 'Lorem' },
-    { _id: '234', name: 'Tweeter',     developerId: '456', description: 'Lorem' },
-    { _id: '456', name: 'Gizmodo',     developerId: '456', description: 'Lorem' },
-    { _id: '890', name: 'Go',          developerId: '123', description: 'Lorem' },
-    { _id: '567', name: 'Tic Tac Toe', developerId: '123', description: 'Lorem' },
-    { _id: '678', name: 'Checkers',    developerId: '123', description: 'Lorem' },
-    { _id: '789', name: 'Chess',       developerId: '234', description: 'Lorem' }
+    { _id: '123', name: 'Facebook',    developerId: '456', description: 'Lorem Facebook Ipsum' },
+    { _id: '234', name: 'Tweeter',     developerId: '456', description: 'Lorem Tweeter Ipsum' },
+    { _id: '456', name: 'Gizmodo',     developerId: '456', description: 'Lorem Gizmodo Ipsum' },
+    { _id: '890', name: 'Go',          developerId: '123', description: 'Lorem Go Ipsum' },
+    { _id: '567', name: 'Tic Tac Toe', developerId: '123', description: 'Lorem Tic Tac Toe Ipsum' },
+    { _id: '678', name: 'Checkers',    developerId: '123', description: 'Lorem Checkers Ipsum' },
+    { _id: '789', name: 'Chess',       developerId: '234', description: 'Lorem Chess Ipsum' }
   ];
   api = {
     'createWebsite' : this.createWebsite,
@@ -24,13 +24,13 @@ export class WebsiteService {
     'updateWebsite' : this.updateWebsite,
     'deleteWebsite' : this.deleteWebsite
   };
-  createWebsite(userId: String, website: any) {
+  createWebsite(userId: string, website: any) {
     website._id = Math.random();
     website.developerId = userId;
     this.websites.push(website);
     return website;
   }
-  findWebsitesByUser(userId: String) {
+  findWebsitesByUser(userId: string) {
     let foundSites = [];
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x].developerId === userId) {
@@ -39,12 +39,12 @@ export class WebsiteService {
     }
     return foundSites;
   }
-  findWebsiteById(websiteId: String) {
+  findWebsiteById(websiteId: string) {
     return this.websites.find(function(site) {
       return site._id === websiteId;
     });
   }
-  updateWebsite(websiteId: String, website: any) {
+  updateWebsite(websiteId: string, website: any) {
     for (let x = 0; x < this.websites.length; x++) {
       const _site = this.websites[x];
       if (_site._id === websiteId) {
@@ -53,7 +53,7 @@ export class WebsiteService {
       }
     }
   }
-  deleteWebsite(websiteId: String) {
+  deleteWebsite(websiteId: string) {
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x]._id === websiteId) {
         this.websites.splice(x, 1);
