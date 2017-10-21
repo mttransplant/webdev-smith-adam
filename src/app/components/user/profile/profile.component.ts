@@ -12,10 +12,10 @@ export class ProfileComponent implements OnInit {
   @ViewChild('f') profileForm: NgForm;
 
   // properties
-  userId: String;
+  userId: string;
   user = {_id: '', username: '', password: '', firstName: '', lastName: '', email: ''};
   showMessage: Boolean = false;
-  msg: String;
+  msg: string;
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,

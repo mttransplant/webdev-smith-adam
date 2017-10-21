@@ -32,19 +32,19 @@
 
       <input placeholder="verify password"
              type="password"
-             name="verification"
+             name="password2"
              ngModel
              required
-             #verification="ngModel"
+             #password2="ngModel"
              class="form-control aps-field-spacing"/>
-      <span class="help-block" *ngIf="password.value != verification.value">
+      <span class="help-block" *ngIf="password.value != password2.value">
       Passwords do not match!
       </span>
       <button class="btn btn-primary btn-block"
               type="submit"
-         [disabled]="!registerForm.valid" >Register</button>
+         [disabled]="!registerForm.valid || password.value != password2.value" >Register</button>
       <a class="btn btn-danger btn-block"
-         routerLink="login">Cancel</a>
+         routerLink="/login">Cancel</a>
     </div>
   </form>
 </div>

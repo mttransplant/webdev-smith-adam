@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   @ViewChild('f') loginForm: NgForm;
 
   // properties
-  username: String;
-  password: String;
+  username: string;
+  password: string;
   errorFlag: Boolean = false;
   errorMsg = 'Invalid username or password!';
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.password = this.loginForm.value.password;
     const user = this.userService.findUserByCredentials(this.username, this.password)
     if(user) {
-      this.router.navigate(['user/' + user._id]);
+      this.router.navigate(['/user/' + user._id]);
     } else {
       this.errorFlag = true;
     }

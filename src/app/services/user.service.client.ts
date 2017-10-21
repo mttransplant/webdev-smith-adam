@@ -9,10 +9,14 @@ export class UserService {
 
   constructor() {}
   users = [
-    {_id: '123', username: 'alice',    password: 'alice',    firstName: 'Alice',  lastName: 'Wonder', email: 'alice.wonderland@unicorn.com'  },
-    {_id: '234', username: 'bob',      password: 'bob',      firstName: 'Bob',    lastName: 'Marley', email: ''  },
-    {_id: '345', username: 'charly',   password: 'charly',   firstName: 'Charly', lastName: 'Garcia', email: ''  },
-    {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose',   lastName: 'Annunzi', email: '' }
+    {_id: '123', username: 'alice',    password: 'alice',
+      firstName: 'Alice',  lastName: 'Wonder', email: 'alice.wonderland@unicorn.com'  },
+    {_id: '234', username: 'bob',      password: 'bob',
+      firstName: 'Bob',    lastName: 'Marley', email: 'bob.marley@regge.com'  },
+    {_id: '345', username: 'charly',   password: 'charly',
+      firstName: 'Charly', lastName: 'Garcia', email: 'charly.garcia@icecream.com'  },
+    {_id: '456', username: 'jannunzi', password: 'jannunzi',
+      firstName: 'Jose',   lastName: 'Annunzi', email: 'j.annunzi@northeastern.edu' }
   ];
   api = {
     'createUser' : this.createUser,

@@ -7,7 +7,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
 // import {TestComponent} from './components/test/test.component';
 import {LoginComponent} from './components/user/login/login.component';
-// import {RegisterComponent} from './components/user/register/register.component';
+import {RegisterComponent} from './components/user/register/register.component';
 import {ProfileComponent} from './components/user/profile/profile.component';
 // import {WebsiteListComponent} from './components/website/website-list/website-list.component';
 // import {WebsiteNewComponent} from './components/website/website-new/website-new.component';
@@ -25,7 +25,7 @@ const APP_ROUTES: Routes = [
   {path: '', component : LoginComponent},
   // {path: 'test', component: TestComponent},
   {path: 'login', component: LoginComponent},
-  // {path: 'register', component: RegisterComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'user/:userId', component: ProfileComponent},
   // {path: 'user/:userId/website', component: WebsiteListComponent},
   // {path: 'user/:userId/website/new', component: WebsiteNewComponent},
