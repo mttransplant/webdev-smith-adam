@@ -42,7 +42,7 @@ import { WidgetService} from './services/widget.service.client';
     WebsiteListComponent,
     // PageNewComponent,
     // PageEditComponent,
-    // PageListComponent,
+    PageListComponent,
     // WidgetChooserComponent,
     // WidgetEditComponent,
     // WidgetListComponent,
