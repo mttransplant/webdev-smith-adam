@@ -33,8 +33,32 @@
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </div>
-      <div ng-include src="'../widget-render.html'"></div>
-
+      <div [ngSwitch]="widget.widgetType">
+        <div *ngSwitchCase="'HEADING'">
+          <div [ngSwitch]="widget.size">
+            <h1 *ngSwitchCase=1>{{widget.text}}</h1>
+            <h2 *ngSwitchCase=2>{{widget.text}}</h2>
+            <h3 *ngSwitchCase=3>{{widget.text}}</h3>
+            <h4 *ngSwitchCase=4>{{widget.text}}</h4>
+            <h5 *ngSwitchCase=5>{{widget.text}}</h5>
+            <h6 *ngSwitchDefault>{{widget.text}}</h6>
+          </div>
+        </div>
+        <div *ngSwitchCase="'IMAGE'">
+          <img src="{{widget.url}}" width="{{widget.width}}"/>
+        </div>
+        <div *ngSwitchCase="'HTML'">
+          <!--<p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>-->
+          {{widget.text}}
+        </div>
+        <div *ngSwitchCase="'YOUTUBE'">
+          <p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>
+          <iframe class="e2e-iframe-trusted-src" width="{{widget.width}}" [src]=sanitizer.bypassSecurityTrustResourceUrl(widget.url) frameborder="0" allowfullscreen></iframe>        </div>
+        <div *ngSwitchDefault>
+          <h3>Switch Default</h3>
+          <p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
