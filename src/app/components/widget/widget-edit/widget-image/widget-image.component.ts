@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {WidgetService} from '../../../../services/widget.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-widget-image',
@@ -13,32 +13,45 @@ export class WidgetImageComponent implements OnInit {
 
   // properties
   widgetId: string;
+  pageId: string;
+  websiteId: string;
+  userId: string;
   widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
-  name: string;
+  width: string;
+  url: string;
 
   // widgetText: String;
-  // url: String;
-  // width: String;
   // file: File;
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
+  constructor(private widgetService: WidgetService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
           this.widgetId = params['widgetId'];
+          this.pageId = params['pageId'];
+          this.websiteId = params['websiteId'];
+          this.userId = params['userId'];
         }
       );
     this.widget = this.widgetService.findWidgetById(this.widgetId);
+    this.width = this.widget.width;
+
+    this.url = this.widget.url;
   }
 
-  createImage() {
-    this.widget.text = this.widgetImageForm.value.name;
-    this.widget.text = this.widgetImageForm.value.widgetText;
+  editImage() {
     this.widget.url = this.widgetImageForm.value.url;
     this.widget.width = this.widgetImageForm.value.width;
     // this.widget.file = this.widgetImageForm.value.file;
+    this.widgetService.updateWidget(this.widgetId, this.widget);
+    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget']);
   }
-
+  deleteImage() {
+    this.widgetService.deleteWidget(this.widgetId);
+    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget']);
+  }
 }

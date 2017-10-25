@@ -1,55 +1,29 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-
-    <!--back button-->
-    <p class="navbar-text pull-left">
-      <a routerLink="user/:uid/website/:wid/page/:pid/widget" class="navbar-link">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-    </p>
-
-    <!--heading on the nav bar-->
-    <p class="navbar-header pull-left">
-      <a class="navbar-brand thick navbar-link">
-        <b>Widget Edit</b>
-      </a>
-    </p>
-
-    <!--tick mark-->
-    <p class="navbar-text pull-right">
-      <a routerLink="user/:uid/website/:wid/page/:pid/widget" class="navbar-link">
-        <span class="glyphicon glyphicon-ok"></span>
-      </a>
-    </p>
-  </div>
-</nav>
-
 <div class="container-fluid aps-body-padding">
   <form class="aps-form-padding"
-        (ngSubmit) = "createImage()" #widgetImageForm="ngForm">
-    <label for="name">Name</label>
-    <input id="name"
-           name="name"
-           [(ngModel)]="name"
-           required
-           type="text"
-           placeholder="Image Name"
-           class="form-control aps-field-spacing"/>
-    <span class="help-block" *ngIf="!name.valid && name.touched">
-      Please enter an image name!
-    </span>
+        (ngSubmit) = "editImage()" #widgetImageForm="ngForm">
+    <!--<label for="name">Name</label>-->
+    <!--<input id="name"-->
+           <!--name="name"-->
+           <!--[(ngModel)]="name"-->
+           <!--required-->
+           <!--type="text"-->
+           <!--placeholder="Image Name"-->
+           <!--class="form-control aps-field-spacing"/>-->
+    <!--<span class="help-block" *ngIf="!name.valid && name.touched">-->
+      <!--Please enter an image name!-->
+    <!--</span>-->
 
-    <label for="widgetText">Text</label>
-    <input id="widgetText"
-           name="widgetText"
-           [(ngModel)]="widgetText"
-           required
-           type="text"
-           class="form-control aps-field-spacing"
-           placeholder="Image description"/>
-    <span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">
-      Please enter a description!
-    </span>
+    <!--<label for="widgetText">Text</label>-->
+    <!--<input id="widgetText"-->
+           <!--name="widgetText"-->
+           <!--[(ngModel)]="widgetText"-->
+           <!--required-->
+           <!--type="text"-->
+           <!--class="form-control aps-field-spacing"-->
+           <!--placeholder="Image description"/>-->
+    <!--<span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">-->
+      <!--Please enter a description!-->
+    <!--</span>-->
 
     <label for="url">URL</label>
     <input id="url"
@@ -75,33 +49,22 @@
       Please enter a width as a percentage!
     </span>
 
-    <label for="file">Upload</label>
-    <input id="file"
-           name="file"
-           [(ngModel)]="file"
-           required
-           type="file"
-           class="form-control aps-field-spacing"/>
+    <!--<label for="file">Upload</label>-->
+    <!--<input id="file"-->
+           <!--name="file"-->
+           <!--[(ngModel)]="file"-->
+           <!--required-->
+           <!--type="file"-->
+           <!--class="form-control aps-field-spacing"/>-->
 
     <button type="submit"
             [disabled]="!widgetImageForm.valid"
-            class="btn btn-primary btn-block">Upload Image</button>
+            class="btn btn-primary btn-block">Save</button>
 
-    <button type="reset"
+    <button type="button"
+            (click)="deleteImage()"
             class="btn btn-danger btn-block">Delete</button>
   </form>
 
 
 </div>
-
-<!-- Footer -->
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <p class="navbar-text pull-right">
-      <a routerLink="user/:uid">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-    </p>
-
-  </div>
-</nav>

@@ -45,7 +45,8 @@
           </div>
         </div>
         <div *ngSwitchCase="'IMAGE'">
-          <img src="{{widget.url}}" width="{{widget.width}}"/>
+          <img [src]="widget.url" [style.width.%]="widget.width.slice(0, widget.width.length - 1)" />
+          <p>{{widget.width}}</p>
         </div>
         <div *ngSwitchCase="'HTML'">
           <!--<p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>-->
