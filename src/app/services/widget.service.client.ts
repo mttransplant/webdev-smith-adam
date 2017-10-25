@@ -22,7 +22,7 @@ export class WidgetService {
     'findWidgetByPageId' : this.findWidgetByPageId,
     'findWidgetById' : this.findWidgetById,
     'updateWidget' : this.updateWidget,
-    'deletewidget' : this.deletewidget
+    'deleteWidget' : this.deleteWidget
   };
   findNextWidgetId() {
     let foundNewId = false;
@@ -61,27 +61,28 @@ export class WidgetService {
     for (let x = 0; x < this.widgets.length; x++) {
       const _widget = this.widgets[x];
       if (_widget._id === widgetId) {
-        this.widgets[x].widgetType = widget.widgetType;
-        switch (widget.widgetType) {
-          case 'HEADING':
-            this.widgets[x].size = widget.size;
-            this.widgets[x].text = widget.text;
-            break;
-          case 'HTML':
-            this.widgets[x].text = widget.text;
-            break;
-          case 'IMAGE':
-          case 'YOUTUBE':
-            this.widgets[x].width = widget.width;
-            this.widgets[x].url = widget.url;
-            break;
-          default:
-            break;
-        }
+        this.widgets[x] = widget;
+        // this.widgets[x].widgetType = widget.widgetType;
+        // switch (this.widgets[x].widgetType) {
+        //   case 'HEADING':
+        //     this.widgets[x].size = widget.size;
+        //     this.widgets[x].text = widget.text;
+        //     break;
+        //   case 'HTML':
+        //     this.widgets[x].text = widget.text;
+        //     break;
+        //   case 'IMAGE':
+        //   case 'YOUTUBE':
+        //     this.widgets[x].width = widget.width;
+        //     this.widgets[x].url = widget.url;
+        //     break;
+        //   default:
+        //     break;
+        // }
       }
     }
   }
-  deletewidget(widgetId: String) {
+  deleteWidget(widgetId: string) {
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
         this.widgets.splice(x, 1);

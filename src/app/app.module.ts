@@ -44,11 +44,11 @@ import { WidgetService} from './services/widget.service.client';
     PageEditComponent,
     PageListComponent,
     // WidgetChooserComponent,
-    // WidgetEditComponent,
+    WidgetEditComponent,
     WidgetListComponent,
-    // WidgetHeaderComponent,
-    // WidgetImageComponent,
-    // WidgetYoutubeComponent
+    WidgetHeaderComponent,
+    WidgetImageComponent,
+    WidgetYoutubeComponent
   ],
   imports: [
     BrowserModule,

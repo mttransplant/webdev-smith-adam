@@ -1,62 +1,24 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-
-    <!--back button-->
-    <p class="navbar-text pull-left">
-      <a routerLink="user/:uid/website/:wid/page/:pid/widget" class="navbar-link">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-    </p>
-
-    <!--heading on the nav bar-->
-    <p class="navbar-header pull-left">
-      <a class="navbar-brand thick navbar-link">
-        <b>Widget Edit</b>
-      </a>
-    </p>
-
-    <!--tick mark-->
-    <p class="navbar-text pull-right">
-      <a routerLink="user/:uid/website/:wid/page/:pid/widget" class="navbar-link">
-        <span class="glyphicon glyphicon-ok"></span>
-      </a>
-    </p>
-  </div>
-</nav>
-
 <div class="container-fluid aps-body-padding">
   <form class="aps-form-padding"
-        (ngSubmit)="createHeader()" #widgetHeaderForm="ngForm">
-    <label for="name">Name</label>
-    <input id="name"
-           name="name"
-           #name="ngModel"
-           [(ngModel)]="name"
-           required
-           type="text"
-           placeholder="Widget Name"
-           class="form-control aps-field-spacing"/>
-    <span class="help-block" *ngIf="!name.valid && name.touched">
-      Please enter a widget name!
-    </span>
+        (ngSubmit)="editHeader()" #widgetHeaderForm="ngForm">
 
-    <label for="widgetText">Text</label>
-    <input id="widgetText"
-           name="widgetText"
-           #widgetText="ngModel"
-           [(ngModel)]="widgetText"
+    <label for="text">Text</label>
+    <input id="text"
+           name="text"
+           [(ngModel)]="text"
            required
            type="text"
            class="form-control aps-field-spacing"
            placeholder="Text of widget"/>
-    <span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">
+    <span class="help-block" *ngIf="!text.valid && text.touched">
       Please enter some widget text!
     </span>
 
     <label for="size">Size</label>
     <input id="size"
            name="size"
-           #size="ngModel"
+           min="1"
+           max="6"
            [(ngModel)]="size"
            required
            type="number"
@@ -67,21 +29,11 @@
     </span>
     <button type="submit"
             class="btn btn-primary btn-block"
-            [disabled]="!widgetHeaderForm.valid">Create Widget</button>
-    <button type="reset" class="btn btn-danger btn-block">Delete</button>
+            [disabled]="!widgetHeaderForm.valid">Save</button>
+    <button type="button"
+            (click)="deleteHeader()"
+            class="btn btn-danger btn-block">Delete</button>
   </form>
 
 
 </div>
-
-<!-- Footer -->
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <p class="navbar-text pull-right">
-      <a routerLink="user/:uid">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-    </p>
-
-  </div>
-</nav>

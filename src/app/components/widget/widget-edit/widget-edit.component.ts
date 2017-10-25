@@ -12,26 +12,26 @@ import {WidgetService} from '../../../services/widget.service.client';
 export class WidgetEditComponent implements OnInit {
 
   // parameters
-  userId: string;
-  websiteId: string;
+  widgetId: string;
   pageId: string;
-  widgets = [{_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''}];
+  websiteId: string;
+  userId: string;
+  widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
 
   constructor(private _widgetService: WidgetService,
-              private _pageService: PageService,
-              private activatedRoute: ActivatedRoute,
-              private _websiteService: WebsiteService) { }
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
+          this.widgetId = params['widgetId'];
           this.pageId = params['pageId'];
+          this.websiteId = params['websiteId'];
+          this.userId = params['userId'];
         }
       );
-    this.widgets = this._widgetService.findWidgetByPageId(this.pageId);
-    this.websiteId = this._pageService.findPageById(this.pageId).websiteId;
-    this.userId = this._websiteService.findWebsiteById(this.websiteId).developerId;
+    this.widget = this._widgetService.findWidgetById(this.widgetId);
   }
 
 }

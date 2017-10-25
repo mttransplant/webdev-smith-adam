@@ -48,6 +48,7 @@ export class PageEditComponent implements OnInit {
     this.page.name = this.pageEditForm.value.name;
     this.page.description = this.pageEditForm.value.description;
     this.pageService.updatePage(this.pageId, this.page);
+    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page']);
   }
 
   deleteCurrentPage() {
