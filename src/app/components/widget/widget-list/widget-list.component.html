@@ -46,15 +46,13 @@
         </div>
         <div *ngSwitchCase="'IMAGE'">
           <img [src]="widget.url" [style.width.%]="widget.width.slice(0, widget.width.length - 1)" />
-          <p>{{widget.width}}</p>
         </div>
         <div *ngSwitchCase="'HTML'">
-          <!--<p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>-->
           {{widget.text}}
         </div>
         <div *ngSwitchCase="'YOUTUBE'">
           <p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>
-          <iframe class="e2e-iframe-trusted-src" width="{{widget.width}}" [src]=sanitizer.bypassSecurityTrustResourceUrl(widget.url) frameborder="0" allowfullscreen></iframe>        </div>
+          <iframe class="e2e-iframe-trusted-src" [style.width.%]="widget.width.slice(0, widget.width.length - 1)" [src]=sanitizer.bypassSecurityTrustResourceUrl(widget.url) frameborder="0" allowfullscreen></iframe>        </div>
         <div *ngSwitchDefault>
           <h3>Switch Default</h3>
           <p>{{widget._id}}: {{widget.widgetType}} - {{widget.text}}</p>
