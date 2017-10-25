@@ -3,7 +3,7 @@
 
     <!--back button-->
     <p class="navbar-text pull-left">
-      <a routerLink="user/:uid/website/:wid/page/:pid/widget" class="navbar-link">
+      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -20,34 +20,34 @@
 <div class="aps-body-padding">
   <div class="container-fluid">
     <p>
-      <a href="widget-heading.html">Header</a>
+      <a (click)="createHeader()">Header</a>
     </p>
     <p>
-      <a href="#">Label</a>
+      <a routerLink=".">Label</a>
     </p>
     <p>
-      <a href="#">HTML</a>
+      <a routerLink=".">HTML</a>
     </p>
     <p>
-      <a href="#">Text Input</a>
+      <a routerLink=".">Text Input</a>
     </p>
     <p>
-      <a href="#">Link</a>
+      <a routerLink=".">Link</a>
     </p>
     <p>
-      <a href="#">Button</a>
+      <a routerLink=".">Button</a>
     </p>
     <p>
-      <a href="widget-image.html">Image</a>
+      <a (click)="createImage()">Image</a>
     </p>
     <p>
-      <a href="widget-youtube.html">YouTube</a>
+      <a (click)="createYoutube()">YouTube</a>
     </p>
     <p>
-      <a href="#">Data Table</a>
+      <a routerLink=".">Data Table</a>
     </p>
     <p>
-      <a href="#">Repeater</a>
+      <a routerLink=".">Repeater</a>
     </p>
   </div>
 </div>
@@ -56,7 +56,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/:uid">
+      <a routerLink="/user/{{userId}}">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
