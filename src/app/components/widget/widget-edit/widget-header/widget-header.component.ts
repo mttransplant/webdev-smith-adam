@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {WidgetService} from '../../../../services/widget.service.client';
+import {WidgetServiceClient} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class WidgetHeaderComponent implements OnInit {
   // widgetText: String;
   // size: Number;
 
-  constructor(private widgetService: WidgetService,
+  constructor(private widgetService: WidgetServiceClient,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 

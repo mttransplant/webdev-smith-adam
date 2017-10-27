@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {PageService} from '../../../services/page.service.client';
+import {PageServiceClient} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ export class PageEditComponent implements OnInit {
   name: string;
   description: string;
 
-  constructor(private pageService: PageService,
+  constructor(private pageService: PageServiceClient,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 

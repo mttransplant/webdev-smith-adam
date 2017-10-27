@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class PageService {
+export class PageServiceClient {
 
   constructor() {}
   pages = [

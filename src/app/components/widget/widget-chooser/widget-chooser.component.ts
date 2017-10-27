@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WidgetService} from '../../../services/widget.service.client';
+import {WidgetServiceClient} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class WidgetChooserComponent implements OnInit {
   userId: string;
   widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
 
-  constructor(private widgetService: WidgetService,
+  constructor(private widgetService: WidgetServiceClient,
               private activatedRoute: ActivatedRoute,
               private router: Router) { }
 

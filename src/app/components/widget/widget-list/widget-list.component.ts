@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {WidgetService} from '../../../services/widget.service.client';
+import {WidgetServiceClient} from '../../../services/widget.service.client';
 // import { NgSwitch} from '@angular/common';
 import {DomSanitizer} from '@angular/platform-browser';
 
@@ -17,7 +17,7 @@ export class WidgetListComponent implements OnInit {
   pageId: string;
   widgets = [{_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''}];
 
-  constructor(private _widgetService: WidgetService,
+  constructor(private _widgetService: WidgetServiceClient,
               private activatedRoute: ActivatedRoute,
               private sanitizer: DomSanitizer) { }
 

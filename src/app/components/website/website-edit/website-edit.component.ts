@@ -1,6 +1,6 @@
 import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {WebsiteService} from '../../../services/website.service.client';
+import {WebsiteServiceClient} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ export class WebsiteEditComponent implements OnInit {
   name: string;
   description: string;
 
-  constructor(private websiteService: WebsiteService,
+  constructor(private websiteService: WebsiteServiceClient,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 

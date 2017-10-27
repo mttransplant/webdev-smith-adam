@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PageService} from '../../../services/page.service.client';
+import {PageServiceClient} from '../../../services/page.service.client';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class PageListComponent implements OnInit {
   websiteId: string;
   pages = [{_id: '', name: '', websiteId: '', description: ''}];
 
-  constructor(private _pageService: PageService,
+  constructor(private _pageService: PageServiceClient,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

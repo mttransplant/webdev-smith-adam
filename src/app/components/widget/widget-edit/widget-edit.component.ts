@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PageService} from '../../../services/page.service.client';
+import {PageServiceClient} from '../../../services/page.service.client';
 import {ActivatedRoute} from '@angular/router';
-import {WebsiteService} from '../../../services/website.service.client';
-import {WidgetService} from '../../../services/widget.service.client';
+import {WebsiteServiceClient} from '../../../services/website.service.client';
+import {WidgetServiceClient} from '../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-edit',
@@ -18,7 +18,7 @@ export class WidgetEditComponent implements OnInit {
   userId: string;
   widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
 
-  constructor(private _widgetService: WidgetService,
+  constructor(private _widgetService: WidgetServiceClient,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

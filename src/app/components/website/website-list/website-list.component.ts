@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {WebsiteService} from '../../../services/website.service.client';
+import {WebsiteServiceClient} from '../../../services/website.service.client';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class WebsiteListComponent implements OnInit {
   website = {_id: '', name: '', developerId: '', description: ''};
   websites = [this.website];
 
-  constructor(private _websiteService: WebsiteService,
+  constructor(private _websiteService: WebsiteServiceClient,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

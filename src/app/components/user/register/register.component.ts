@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {UserService} from '../../../services/user.service.client';
+import {UserServiceClient} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private userService: UserService,
+  constructor(private userService: UserServiceClient,
               private router: Router) { }
 
   ngOnInit() {
