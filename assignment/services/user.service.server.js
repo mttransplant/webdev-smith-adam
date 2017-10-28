@@ -10,24 +10,35 @@ module.exports = function(app) {
   app.put('/api/user/:userId', updateUser);
   app.delete('/api/user/:userId', deleteUser);
 
-  // var users = require('./user.mock');
 
-  var users = [
-    {_id: '123', username: 'alice',    password: 'alice',
-      firstName: 'Alice',  lastName: 'Wonder', email: 'alice.wonderland@unicorn.com'  },
-    {_id: '234', username: 'bob',      password: 'bob',
-      firstName: 'Bob',    lastName: 'Marley', email: 'bob.marley@regge.com'  },
-    {_id: '345', username: 'charly',   password: 'charly',
-      firstName: 'Charly', lastName: 'Garcia', email: 'charly.garcia@icecream.com'  },
-    {_id: '456', username: 'jannunzi', password: 'jannunzi',
-      firstName: 'Jose',   lastName: 'Annunzi', email: 'j.annunzi@northeastern.edu' }
-  ];
+  var users = require('./user.mock.ts');
+
+  function findNextUserId() {
+    let foundNewId = false;
+    let newId = 123;
+    const min = Math.ceil(100);
+    const max = Math.floor(999);
+    while (!foundNewId) {
+      newId = Math.floor(Math.random() * (max - min)) + min;
+      if (!users.find(function(user) {
+        return user._id === newId;
+        })) {
+        foundNewId = true;
+      };
+    }
+    return newId.toString();
+  }
 
   function createUser(req, res) {
-    res.send({message: "You've reached the createUser function"});
+    // console.log('we are in the createUser on the server');
+    var newUser = req.body;
+    newUser._id = findNextUserId();
+    users.push(newUser);
+    return res.json(newUser);
+    // res.send({message: "You've reached the createUser function"});
   }
   function findUsers(req, res) {
-    // console.log('we are in the findUsers');
+    // console.log('we are in the findUsers on the server');
     var username = req.query['username'];
     var password = req.query['password'];
     if (username && password) {
@@ -35,20 +46,20 @@ module.exports = function(app) {
         return user.username === username && user.password === password;
       });
       if (user) {
-        res.json(user)
+        return res.json(user);
       } else {
-        res.json(null)
+        return res.json(null);
       }
     }
-    var username = req.query['username'];
+    // var username = req.query['username'];
     if (username) {
       var user = users.find(function(user) {
         return user.username === username;
       });
       if (user) {
-        res.json(user);
+        return res.json(user);
       } else {
-        res.json(null);
+        return res.json(null);
       }
     }
   }
@@ -113,6 +124,13 @@ module.exports = function(app) {
   }
 
   function deleteUser(req, res) {
-    res.send({message: "You've reached the deleteUser function"});
+    var userId = req.params['userId'];
+    for (let x = 0; x < this.users.length; x++) {
+        if (this.users[x]._id === userId) {
+          this.users.splice(x, 1);
+        }
+      }
+
+    // res.send({message: "You've reached the deleteUser function"});
   }
 }

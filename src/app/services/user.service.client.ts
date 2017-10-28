@@ -3,25 +3,13 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-import { USERS } from './user.mock';
 import { User } from '../models/user.model.client';
 
 @Injectable()
 export class UserServiceClient {
-  // users: User[] = USERS;
-  // user = {_id: '', username: '', password: '', firstName: '', lastName: '', email: ''};
-  user: User;
-  users: User[] = USERS;
-  // users = [
-  //   {_id: '123', username: 'alice',    password: 'alice',
-  //     firstName: 'Alice',  lastName: 'Wonder', email: 'alice.wonderland@unicorn.com'  },
-  //   {_id: '234', username: 'bob',      password: 'bob',
-  //     firstName: 'Bob',    lastName: 'Marley', email: 'bob.marley@regge.com'  },
-  //   {_id: '345', username: 'charly',   password: 'charly',
-  //     firstName: 'Charly', lastName: 'Garcia', email: 'charly.garcia@icecream.com'  },
-  //   {_id: '456', username: 'jannunzi', password: 'jannunzi',
-  //     firstName: 'Jose',   lastName: 'Annunzi', email: 'j.annunzi@northeastern.edu' }
-  // ];
+  user: User = {_id: '', username: '', password: '', firstName: '', lastName: '', email: ''};
+  users: User[];
+
   constructor(private _http: Http) {}
 
   baseUrl = environment.baseUrl;
@@ -34,10 +22,16 @@ export class UserServiceClient {
     'updateUser' : this.updateUser,
     'deleteUser' : this.deleteUser
   };
-  createUser(user: any) {
-    user._id = Math.random();
-    this.users.push(user);
-    return user;
+  createUser(user: User) {
+    // console.log('arrived at create user in user.service.client');
+    return this._http.post(this.baseUrl + '/api/user/', user)
+      .map((res: Response) => {
+        // console.log('user.service.client is about to return', res.json());
+        return res.json();
+      });
+    // user._id = Math.random();
+    // this.users.push(user);
+    // return user;
   }
 
   findUserById(userId: string) {
@@ -53,9 +47,16 @@ export class UserServiceClient {
     // }
   }
   findUserByUsername(username: string) {
-    return this.users.find(function (user) {
-      return user.username === username;
-    });
+    // console.log('arrived at findUserByUsername in user.service.client', username);
+    // console.log('about to call ', this.baseUrl + '/api/user?username=' + username);
+    return this._http.get(this.baseUrl + '/api/user?username=' + username)
+      .map((res: Response) => {
+        // console.log('user.service.client is about to return', res.json());
+        return res.json();
+      });
+    // return this.users.find(function (user) {
+    //   return user.username === username;
+    // });
   }
   findUserByCredentials(username: string, password: string) {
     return this._http.get(this.baseUrl + '/api/user?username=' + username + '&password=' + password)
@@ -72,6 +73,7 @@ export class UserServiceClient {
     return this._http.put(this.baseUrl + '/api/user/' + userId, user)
       .map((res: Response) => {
         // console.log('server has responded.');
+        // console.log(res.json());
         return res.json();
       });
     // for (let x = 0; x < this.users.length; x++) {
@@ -83,11 +85,15 @@ export class UserServiceClient {
     //   }
     // }
   }
-  deleteUser(userId: String) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        this.users.splice(x, 1);
-      }
-    }
+  deleteUser(userId: string) {
+    return this._http.delete(this.baseUrl + '/api/user/' + userId)
+      .map((res: Response) => {
+        return res.json();
+      });
+    // for (let x = 0; x < this.users.length; x++) {
+    //   if (this.users[x]._id === userId) {
+    //     this.users.splice(x, 1);
+    //   }
+    // }
   }
 }
