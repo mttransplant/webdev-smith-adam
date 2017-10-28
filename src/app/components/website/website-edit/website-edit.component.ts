@@ -2,6 +2,7 @@ import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {WebsiteServiceClient} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -15,7 +16,7 @@ export class WebsiteEditComponent implements OnInit {
   // properties
   websiteId: string;
   userId: string;
-  website = {_id: '', name: '', developerId: '', description: ''};
+  website: Website = {_id: '', name: '', developerId: '', description: ''};
   websites = [this.website];
   name: string;
   description: string;
@@ -40,7 +41,7 @@ export class WebsiteEditComponent implements OnInit {
     this.website = this.websiteService.findWebsiteById(this.websiteId);
     this.name = this.website['name'];
     this.description = this.website['description'];
-    this.websites = this.websiteService.findWebsitesByUser(this.userId);
+    // this.websites = this.websiteService.findWebsitesByUser(this.userId);
   }
 
   editWebsite() {

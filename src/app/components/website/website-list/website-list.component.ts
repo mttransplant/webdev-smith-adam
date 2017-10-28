@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteServiceClient} from '../../../services/website.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-website-list',
@@ -11,11 +12,10 @@ export class WebsiteListComponent implements OnInit {
 
   // parameters
   userId: string;
-  // website: {_id: string, name: string, developerId: string, description: string};
-  website = {_id: '', name: '', developerId: '', description: ''};
-  websites = [this.website];
+  website: Website = {_id: '', name: '', developerId: '', description: ''};
+  websites: Website[];
 
-  constructor(private _websiteService: WebsiteServiceClient,
+  constructor(private websiteService: WebsiteServiceClient,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,9 +23,11 @@ export class WebsiteListComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.userId = params['userId'];
+          this.websiteService.findWebsitesByUser(this.userId)
+            .subscribe((websites: Website[]) => {
+              this.websites = websites;
+            });
         }
       );
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
   }
-
 }
