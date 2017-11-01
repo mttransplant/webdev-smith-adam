@@ -48,9 +48,11 @@ export class WebsiteNewComponent implements OnInit {
     this.website.description = this.description;
     // console.log(this.website);
 
-    this.websiteService.createWebsite(this.userId, this.website);
+    this.websiteService.createWebsite(this.userId, this.website)
+      .subscribe((website: Website) => {
+        this.website = website;
+        this.router.navigate(['/user/' + this.userId + '/website']);
+      });
     // console.log(this.websiteService.websites);
-    this.router.navigate(['/user/' + this.userId + '/website']);
   }
-
 }

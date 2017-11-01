@@ -18,8 +18,8 @@ export class WebsiteEditComponent implements OnInit {
   userId: string;
   website: Website = {_id: '', name: '', developerId: '', description: ''};
   websites = [this.website];
-  name: string;
-  description: string;
+  name = this.website['name'];
+  description = this.website['description'];
 
   constructor(private websiteService: WebsiteServiceClient,
               private router: Router,
@@ -30,28 +30,38 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe(params => this.handleRouteChange(params));
   }
 
-  handleRouteChange(params) {
+  handleRouteChange(routeParams) {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.websiteId = params['websiteId'];
-          this.userId = params['userId'];
+          this.websiteId = routeParams['websiteId'];
+          this.userId = routeParams['userId'];
         }
       );
-    this.website = this.websiteService.findWebsiteById(this.websiteId);
-    this.name = this.website['name'];
-    this.description = this.website['description'];
+    this.websiteService.findWebsiteById(this.websiteId)
+      .subscribe((website: Website) => {
+        this.website = website;
+        this.name = website['name'];
+        this.description = website['description'];
+        // console.log('website name: ', website['name']);
+        // console.log('website description: ', website['description']);
+      });
     // this.websites = this.websiteService.findWebsitesByUser(this.userId);
   }
 
   editWebsite() {
     this.website.name = this.websiteEditForm.value.name;
     this.website.description = this.websiteEditForm.value.description;
-    this.websiteService.updateWebsite(this.websiteId, this.website);
+    this.websiteService.updateWebsite(this.websiteId, this.website)
+      .subscribe((website: Website) => {
+        this.website = website;
+      });
   }
 
   deleteCurrentWebsite() {
-    this.websiteService.deleteWebsite(this.websiteId);
-    this.router.navigate(['/user/' + this.userId + '/website']);
+    this.websiteService.deleteWebsite(this.websiteId)
+      .subscribe((website: Website) => {
+        this.router.navigate(['/user/' + this.userId + '/website']);
+      });
   }
 }

@@ -32,24 +32,29 @@ export class WebsiteServiceClient {
     'deleteWebsite' : this.deleteWebsite
   };
 
-  findNextWebsiteId() {
-    let foundNewId = false;
-    let newId = 123;
-    while (!foundNewId) {
-      const min = Math.ceil(100);
-      const max = Math.floor(999);
-      newId = Math.floor(Math.random() * (max - min)) + min;
-      if (!this.findWebsiteById(newId.toString())) {
-        foundNewId = true;
-      }
-    }
-    return newId.toString();
-  }
+  // findNextWebsiteId() {
+  //   let foundNewId = false;
+  //   let newId = 123;
+  //   while (!foundNewId) {
+  //     const min = Math.ceil(100);
+  //     const max = Math.floor(999);
+  //     newId = Math.floor(Math.random() * (max - min)) + min;
+  //     if (!this.findWebsiteById(newId.toString())) {
+  //       foundNewId = true;
+  //     }
+  //   }
+  //   return newId.toString();
+  // }
   createWebsite(userId: string, website: any) {
-    website._id = this.findNextWebsiteId();
-    website.developerId = userId;
-    this.websites.push(website);
-    return website;
+    return this._http.post(this.baseUrl + '/api/user/' + userId + '/website', website)
+      .map((res: Response) => {
+        return res.json();
+      });
+
+    // website._id = this.findNextWebsiteId();
+    // website.developerId = userId;
+    // this.websites.push(website);
+    // return website;
   }
   findWebsitesByUser(userId: string) {
     return this._http.get(this.baseUrl + '/api/user/' + userId + '/website')
@@ -65,24 +70,40 @@ export class WebsiteServiceClient {
     // return foundSites;
   }
   findWebsiteById(websiteId: string) {
-    return this.websites.find(function(site) {
-      return site._id === websiteId;
-    });
+    return this._http.get(this.baseUrl + '/api/website/' + websiteId)
+      .map((res: Response) => {
+        // console.log('from website.service.client findWebsiteById about to return: ', res.json());
+        return res.json();
+      });
+    // return this.websites.find(function(site) {
+    //   return site._id === websiteId;
+    // });
   }
   updateWebsite(websiteId: string, website: any) {
-    for (let x = 0; x < this.websites.length; x++) {
-      const _site = this.websites[x];
-      if (_site._id === websiteId) {
-        this.websites[x].name = website.name;
-        this.websites[x].description = website.description;
-      }
-    }
+    return this._http.put(this.baseUrl + '/api/website/' + websiteId, website)
+      .map((res: Response) => {
+        return res.json();
+      });
+
+
+    // for (let x = 0; x < this.websites.length; x++) {
+    //   const _site = this.websites[x];
+    //   if (_site._id === websiteId) {
+    //     this.websites[x].name = website.name;
+    //     this.websites[x].description = website.description;
+    //   }
+    // }
   }
   deleteWebsite(websiteId: string) {
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x]._id === websiteId) {
-        this.websites.splice(x, 1);
-      }
-    }
+    return this._http.delete(this.baseUrl + '/api/website/' + websiteId)
+      .map((res: Response) => {
+        return res.json();
+      });
+
+    // for (let x = 0; x < this.websites.length; x++) {
+    //   if (this.websites[x]._id === websiteId) {
+    //     this.websites.splice(x, 1);
+    //   }
+    // }
   }
 }

@@ -3,16 +3,23 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import {Page} from '../models/page.model.client';
 
 @Injectable()
 export class PageServiceClient {
+  page: Page = {_id: '', name: '', websiteId: '', description: ''};
+  pages: Page[];
 
-  constructor() {}
-  pages = [
-    { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem Post 1 Ipsum' },
-    { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem Post 2 Ipsum' },
-    { _id: '543', name: 'Post 3', websiteId: '456', description: 'Lorem Post 3 Ipsum' }
-  ];
+  constructor(private _http: Http) {}
+
+  baseUrl = environment.baseUrl;
+
+  // pages = [
+  //   { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem Post 1 Ipsum' },
+  //   { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem Post 2 Ipsum' },
+  //   { _id: '543', name: 'Post 3', websiteId: '456', description: 'Lorem Post 3 Ipsum' }
+  // ];
+
   api = {
     'createPage' : this.createPage,
     'findPagesByWebsiteId' : this.findPagesByWebsiteId,
