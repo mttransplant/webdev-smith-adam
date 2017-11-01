@@ -45,7 +45,7 @@ export class WebsiteServiceClient {
   //   }
   //   return newId.toString();
   // }
-  createWebsite(userId: string, website: any) {
+  createWebsite(userId: string, website: Website) {
     return this._http.post(this.baseUrl + '/api/user/' + userId + '/website', website)
       .map((res: Response) => {
         return res.json();
@@ -79,7 +79,7 @@ export class WebsiteServiceClient {
     //   return site._id === websiteId;
     // });
   }
-  updateWebsite(websiteId: string, website: any) {
+  updateWebsite(websiteId: string, website: Website) {
     return this._http.put(this.baseUrl + '/api/website/' + websiteId, website)
       .map((res: Response) => {
         return res.json();
