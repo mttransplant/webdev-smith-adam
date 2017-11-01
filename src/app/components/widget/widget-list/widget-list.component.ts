@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {WidgetServiceClient} from '../../../services/widget.service.client';
 // import { NgSwitch} from '@angular/common';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Widget} from '../../../models/widget.model.client';
 
 @Component({
   selector: 'app-widget-list',
@@ -15,7 +16,8 @@ export class WidgetListComponent implements OnInit {
   userId: string;
   websiteId: string;
   pageId: string;
-  widgets = [{_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''}];
+  widget: Widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
+  widgets: Widget[];
 
   constructor(private _widgetService: WidgetServiceClient,
               private activatedRoute: ActivatedRoute,
@@ -28,9 +30,13 @@ export class WidgetListComponent implements OnInit {
           this.pageId = params['pageId'];
           this.websiteId = params['websiteId'];
           this.userId = params['userId'];
+          this._widgetService.findWidgetsByPageId(this.pageId)
+            .subscribe((widgets: Widget[]) => {
+              this.widgets = widgets;
+            });
         }
       );
-    this.widgets = this._widgetService.findWidgetByPageId(this.pageId);
+    // this.widgets = this._widgetService.findWidgetByPageId(this.pageId);
   }
 
 }

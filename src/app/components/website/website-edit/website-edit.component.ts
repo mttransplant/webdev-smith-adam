@@ -60,7 +60,7 @@ export class WebsiteEditComponent implements OnInit {
 
   deleteCurrentWebsite() {
     this.websiteService.deleteWebsite(this.websiteId)
-      .subscribe((website: Website) => {
+      .subscribe((websiteId: string) => {
         this.router.navigate(['/user/' + this.userId + '/website']);
       });
   }

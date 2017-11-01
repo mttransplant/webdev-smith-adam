@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {WidgetServiceClient} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Widget} from '../../../../models/widget.model.client';
 
 @Component({
   selector: 'app-widget-header',
@@ -16,9 +17,9 @@ export class WidgetHeaderComponent implements OnInit {
   pageId: string;
   websiteId: string;
   userId: string;
-  widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
-  text: string;
-  size: number;
+  widget: Widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
+  text = this.widget.text;
+  size = this.widget.size;
 
   // widgetText: String;
   // size: Number;
@@ -35,23 +36,33 @@ export class WidgetHeaderComponent implements OnInit {
           this.pageId = params['pageId'];
           this.websiteId = params['websiteId'];
           this.userId = params['userId'];
+          this.widgetService.findWidgetById(this.widgetId)
+            .subscribe((widget: Widget) => {
+              this.widget = widget;
+              this.text = this.widget.text;
+              this.size = this.widget.size;
+            });
         }
       );
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
-    this.text = this.widget.text;
-    this.size = this.widget.size;
   }
 
   editHeader() {
     this.widget.text = this.widgetHeaderForm.value.text;
     this.widget.size = this.widgetHeaderForm.value.size;
-    this.widgetService.updateWidget(this.widgetId, this.widget);
-    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget']);
+    this.widgetService.updateWidget(this.widgetId, this.widget)
+      .subscribe((widget: Widget) => {
+        this.widget = widget;
+        this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId +
+        '/page/' + this.pageId + '/widget']);
+      });
   }
 
   deleteHeader() {
-    this.widgetService.deleteWidget(this.widgetId);
-    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget']);
+    this.widgetService.deleteWidget(this.widgetId)
+      .subscribe((widgetId: string) => {
+        this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId +
+        '/page/' + this.pageId + '/widget']);
+      });
   }
 
 }

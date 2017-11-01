@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WidgetServiceClient} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Widget} from '../../../models/widget.model.client';
 
 @Component({
   selector: 'app-widget-chooser',
@@ -13,7 +14,7 @@ export class WidgetChooserComponent implements OnInit {
   pageId: string;
   websiteId: string;
   userId: string;
-  widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
+  widget: Widget = {_id: '', widgetType: '', pageId: '', size: 0, text: '', width: '', url: ''};
 
   constructor(private widgetService: WidgetServiceClient,
               private activatedRoute: ActivatedRoute,
@@ -32,19 +33,31 @@ export class WidgetChooserComponent implements OnInit {
   createHeader() {
     this.widget.widgetType = 'HEADING';
     this.widget.size = 1;
-    this.widget = this.widgetService.createWidget(this.pageId, this.widget);
-    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.widget._id]);
+    this.widgetService.createWidget(this.pageId, this.widget)
+      .subscribe((widget: Widget) => {
+        this.widget = widget;
+        this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId +
+        '/page/' + this.pageId + '/widget/' + this.widget._id]);
+      });
   }
   createImage() {
     this.widget.widgetType = 'IMAGE';
     this.widget.width = '100%';
-    this.widget = this.widgetService.createWidget(this.pageId, this.widget);
-    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.widget._id]);
+    this.widgetService.createWidget(this.pageId, this.widget)
+      .subscribe((widget: Widget) => {
+        this.widget = widget;
+        this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId +
+        '/page/' + this.pageId + '/widget/' + this.widget._id]);
+      });
   }
   createYoutube() {
     this.widget.widgetType = 'YOUTUBE';
     this.widget.width = '100%';
-    this.widget = this.widgetService.createWidget(this.pageId, this.widget);
-    this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.widget._id]);
+    this.widgetService.createWidget(this.pageId, this.widget)
+      .subscribe((widget: Widget) => {
+        this.widget = widget;
+        this.router.navigate(['/user/' + this.userId + '/website/' + this.websiteId +
+        '/page/' + this.pageId + '/widget/' + this.widget._id]);
+      });
   }
 }
